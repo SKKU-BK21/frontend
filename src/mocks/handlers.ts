@@ -186,7 +186,7 @@ export const handlers = [
           rating: "excellence",
         },
       ],
-      proprtions: [
+      proportions: [
         {
           country: "USA",
           proportion: 16.7,
