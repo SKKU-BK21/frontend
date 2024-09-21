@@ -1,1 +1,0 @@
-export { GradeChip } from "./GradeChip";
