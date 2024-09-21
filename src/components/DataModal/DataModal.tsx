@@ -2,30 +2,49 @@
 
 import { ReactEventHandler, useEffect, useRef, useState } from "react";
 import classes from "./DataModal.module.css";
-import { IconX } from "./\belements/IconX";
+import { IconX } from "./elements/IconX";
+import { Conference } from "@/types/conferences";
 
 export interface IDataModalProps {
+  conferenceId: number;
   open: boolean;
   onClose?: ReactEventHandler<HTMLDialogElement>;
   withCloseButton?: boolean;
-  title?: string;
-  children?: React.ReactNode;
 }
 
-export function DataModal({ open, onClose, withCloseButton, title, children }: IDataModalProps) {
+export function DataModal({ conferenceId, open, onClose, withCloseButton }: IDataModalProps) {
+  // dialog element 참조를 위한 ref
   const dialogRef = useRef<HTMLDialogElement | null>(null);
 
+  // 모달의 크기
   const [dimensions, setDimensions] = useState({ width: 500, height: 300 });
 
+  // 모달의 위치 및 초기 위치 계산
   const windowWidth = window.innerWidth;
   const windowHeight = window.innerHeight;
   const initialX = (windowWidth - dimensions.width) / 2;
   const initialY = (windowHeight - dimensions.height) / 2;
   const [position, setPosition] = useState({ x: initialX, y: initialY });
 
+  // 리사이징 및 드래깅 상태
   const [isResizing, setIsResizing] = useState(false);
   const [isDragging, setIsDragging] = useState(false);
   const [dragOffset, setDragOffset] = useState({ offsetX: 0, offsetY: 0 });
+
+  // 모달 데이터
+  const [data, setData] = useState<Conference>();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await fetch(`/api/conferences/${conferenceId}`);
+      const data = await response.json();
+      setData(data);
+    };
+
+    if (open) {
+      fetchData();
+    }
+  }, [open, conferenceId]);
 
   useEffect(() => {
     if (open) {
@@ -142,7 +161,7 @@ export function DataModal({ open, onClose, withCloseButton, title, children }: I
           cursor: isDragging ? "grabbing" : "grab",
         }}
       >
-        <h2>{title}</h2>
+        <h2>{data?.acronym}</h2>
 
         {withCloseButton && (
           <button onClick={handleCloseModal} className={classes.closeButton}>
@@ -151,7 +170,9 @@ export function DataModal({ open, onClose, withCloseButton, title, children }: I
         )}
       </div>
 
-      <div className={classes.modalContent}>{children}</div>
+      <div className={classes.modalContent}>
+        <h3>{data?.fullName}</h3>
+      </div>
 
       {/* 리사이즈 핸들 */}
       <div className={classes.resizeHandle} onMouseDown={handleResizeMouseDown} />
