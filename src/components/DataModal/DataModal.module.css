@@ -9,6 +9,7 @@
   max-height: 90vh; 
   min-width: 200px;
   min-height: 200px;
+  padding: 10px;
 }
 
 .resizeHandle {
@@ -22,7 +23,7 @@
 
 .modalHeader {
   cursor: move;
-  padding: 20px;
+  padding: 20px 20px 0px 20px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -32,7 +33,7 @@
 }
 
 .modalContent {
-  padding: 20px;
+  padding: 10px 20px 20px 20px;
 }
 
 .closeButton {
@@ -47,5 +48,37 @@
 }
 
 .closeButton:hover {
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.title {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.fullName {
+  font-size: 16px;
+  font-weight: normal;
+}
+
+.subTitle {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.ps {
+  padding: 8px 0px;
+}
+
+.pm {
+  padding: 16px 0px;
+}
+
+.pl {
+  padding: 24px 0px;
+}
+
+.gap {
+  display: flex;
+  gap: 8px;
 }

@@ -1,9 +1,12 @@
 "use client";
 
-import { ReactEventHandler, useEffect, useRef, useState } from "react";
+import { ReactEventHandler, use, useEffect, useRef, useState } from "react";
 import classes from "./DataModal.module.css";
 import { IconX } from "./elements/IconX";
 import { Conference } from "@/types/conferences";
+import { BarGraph } from "./elements";
+import { RatingBadge } from "../RatingBadge";
+import { DataTable } from "./elements/DataTable/DataTable";
 
 export interface IDataModalProps {
   conferenceId: number;
@@ -17,7 +20,7 @@ export function DataModal({ conferenceId, open, onClose, withCloseButton }: IDat
   const dialogRef = useRef<HTMLDialogElement | null>(null);
 
   // 모달의 크기
-  const [dimensions, setDimensions] = useState({ width: 500, height: 300 });
+  const [dimensions, setDimensions] = useState({ width: 600, height: 800 });
 
   // 모달의 위치 및 초기 위치 계산
   const windowWidth = window.innerWidth;
@@ -161,8 +164,7 @@ export function DataModal({ conferenceId, open, onClose, withCloseButton }: IDat
           cursor: isDragging ? "grabbing" : "grab",
         }}
       >
-        <h2>{data?.acronym}</h2>
-
+        <h2 className={classes.title}>{data?.acronym}</h2>
         {withCloseButton && (
           <button onClick={handleCloseModal} className={classes.closeButton}>
             <IconX />
@@ -170,8 +172,26 @@ export function DataModal({ conferenceId, open, onClose, withCloseButton }: IDat
         )}
       </div>
 
+      {/* 모달 content */}
       <div className={classes.modalContent}>
-        <h3>{data?.fullName}</h3>
+        {data && (
+          <>
+            <h3 className={classes.fullName}>{data.fullName}</h3>
+            <div className={`${classes.gap} ${classes.ps}`}>
+              {data.ratings.map((item, index) => (
+                <RatingBadge key={index} year={item.year} rating={item.rating} />
+              ))}
+            </div>
+            <div className={classes.pl}>
+              <div className={classes.subTitle}>{"한국 랭킹"}</div>
+              <BarGraph proportions={data.proportions} height={200} />
+            </div>
+            <div className={classes.pl}>
+              <div className={`${classes.subTitle} ${classes.ps}`}>{"한국 논문 목록"}</div>
+              <DataTable render={open} id={conferenceId} />
+            </div>
+          </>
+        )}
       </div>
 
       {/* 리사이즈 핸들 */}
