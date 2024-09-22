@@ -13,9 +13,18 @@ export interface IDataModalProps {
   open: boolean;
   onClose?: ReactEventHandler<HTMLDialogElement>;
   withCloseButton?: boolean;
+  fromYear?: number;
+  toYear?: number;
 }
 
-export function DataModal({ conferenceId, open, onClose, withCloseButton }: IDataModalProps) {
+export function DataModal({
+  conferenceId,
+  open,
+  onClose,
+  withCloseButton,
+  fromYear,
+  toYear,
+}: IDataModalProps) {
   // dialog element 참조를 위한 ref
   const dialogRef = useRef<HTMLDialogElement | null>(null);
 
@@ -188,7 +197,7 @@ export function DataModal({ conferenceId, open, onClose, withCloseButton }: IDat
             </div>
             <div className={classes.pl}>
               <div className={`${classes.subTitle} ${classes.ps}`}>{"한국 논문 목록"}</div>
-              <DataTable render={open} id={conferenceId} />
+              <DataTable render={open} id={conferenceId} fromYear={fromYear} toYear={toYear} />
             </div>
           </>
         )}
