@@ -226,7 +226,7 @@ export const handlers = [
       ],
     });
   }),
-  http.post("/api/conferences/:id/publications", () => {
+  http.get("/api/conferences/:id/publications", () => {
     return HttpResponse.json({
       pageNumber: 1,
       pageSize: 10,
