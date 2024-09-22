@@ -8,11 +8,11 @@ export interface IBarGraphProps {
 }
 
 export function BarGraph({ proportions, height }: IBarGraphProps) {
-  const maxProportion = Math.max(...proportions.map((item) => item.proportion));
+  const maxProportion = proportions ? Math.max(...proportions.map((item) => item.proportion)) : 0;
 
   return (
     <div className={classes["bar-chart-container"]} style={{ height: height }}>
-      {proportions.map((item) => (
+      {proportions?.map((item) => (
         <div key={item.country} className={classes["bar-container"]}>
           <div
             className={`${classes.bar} ${item.country === "KOR" ? classes.blue : ""}`}
