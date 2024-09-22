@@ -60,3 +60,27 @@
 .resize-handle:hover::before {
   color: #74777F;
 }
+
+.sort-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 20px;
+  padding-bottom: 8px;
+}
+
+.sort-container span {
+  font-size: 12px;
+}
+
+.sort-select {
+  font-size: 12px;
+  color: #74777F;
+  cursor: pointer;
+  font-weight: 400;
+}
+
+.sort-select.active {
+  color: #425E91;
+  font-weight: 600;
+}
