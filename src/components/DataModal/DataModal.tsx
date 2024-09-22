@@ -6,7 +6,7 @@ import { IconX } from "./elements/IconX";
 import { Conference } from "@/types/conferences";
 import { BarGraph } from "./elements";
 import { RatingBadge } from "../RatingBadge";
-import { DataTable } from "./elements/DataTable/DataTable";
+import { DataTable } from "./elements";
 
 export interface IDataModalProps {
   conferenceId: number;
