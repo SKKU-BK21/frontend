@@ -15,3 +15,11 @@ export interface Conference {
   ratings: Rating[];
   proportions: Proportion[];
 }
+
+export interface Publication {
+  id: number;
+  title: string;
+  authors: string[];
+  publicationYear: string;
+  citationCount: number;
+}
