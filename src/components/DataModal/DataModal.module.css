@@ -1,0 +1,86 @@
+.dialog {
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.2);
+  position: fixed;
+  overflow: hidden;
+  resize: both;
+  max-width: 90vw; 
+  max-height: 90vh; 
+  min-width: 200px;
+  min-height: 200px;
+  padding: 10px;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+
+.resizeHandle {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 20px;
+  height: 20px;
+  cursor: se-resize;
+}
+
+.modalHeader {
+  cursor: move;
+  padding: 20px 20px 0px 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  /* 필요한가? */
+  user-select: none;
+}
+
+.modalContent {
+  padding: 10px 20px 20px 20px;
+}
+
+.closeButton {
+  height: fit-content;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12%;
+}
+
+.closeButton:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.title {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.fullName {
+  font-size: 16px;
+  font-weight: normal;
+}
+
+.subTitle {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.ps {
+  padding: 8px 0px;
+}
+
+.pm {
+  padding: 16px 0px;
+}
+
+.pl {
+  padding: 24px 0px;
+}
+
+.gap {
+  display: flex;
+  gap: 8px;
+}

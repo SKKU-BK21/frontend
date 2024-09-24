@@ -1,0 +1,17 @@
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.pagination-icon {
+  cursor: pointer;
+  fill: currentColor;
+}
+
+.pagination-icon.disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
