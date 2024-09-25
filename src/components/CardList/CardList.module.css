@@ -1,0 +1,19 @@
+.root {
+  max-width: 1200px;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.column {
+  flex: 25%;
+}
+
+.topFilter {
+  font-weight: 700;
+  text-align: right;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}

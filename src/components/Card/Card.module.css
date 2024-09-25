@@ -1,0 +1,50 @@
+.cardContainer {
+  border: 1px solid #000000;
+  border-radius: 10px;
+  margin: 20px;
+  padding: 15px;
+}
+
+.ratio {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+.proportion {
+  margin-right: 10px;
+  font-size: 30pt;
+  font-weight: 700;
+}
+
+.cardTitle {
+  font-size: 14pt;
+  font-weight: 700;
+}
+
+.ps {
+  padding: 8px 0px;
+}
+
+.pm {
+  padding: 16px 0px;
+}
+
+.pl {
+  padding: 24px 0px;
+}
+
+.gap {
+  display: flex;
+  gap: 8px;
+}
+
+.redArrow {
+  color: #DA2E2E;
+  font-weight: 900;
+}
+
+.blueArrow {
+  color: #425E91;
+  font-weight: 900;
+}

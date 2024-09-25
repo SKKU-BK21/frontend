@@ -1,0 +1,32 @@
+.root {
+  padding: 60px;
+}
+
+.categoryContainer {
+  margin-bottom: 60px;
+}
+
+.categoryTitle {
+  margin-bottom: 10px;
+}
+
+.ratingInput {
+  accent-color: #425E91;
+}
+
+.categoryInput {
+  accent-color: #425E91;
+}
+
+.yearInput {
+  width: 90px;
+}
+
+.yearButton {
+  margin-left: 10px;
+  background-color: #425E91;
+  border: 0px;
+  border-radius: 6px;
+  padding: 4px;
+  color: #ffffff;
+}

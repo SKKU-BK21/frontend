@@ -1,10 +1,10 @@
 import classes from "./RatingBadge.module.css";
 
-type Rating = "top" | "excellence";
+// type Rating = "top" | "excellence";
 
 interface IRatingBadgeProps {
   year: number;
-  rating: Rating;
+  rating: string;
   width?: string;
   height?: string;
   backgroundColor?: string;
