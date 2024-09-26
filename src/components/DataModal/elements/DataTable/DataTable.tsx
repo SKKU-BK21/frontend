@@ -126,6 +126,13 @@ export function DataTable({ id, render, fromYear, toYear }: IDataTableProps) {
                 <td key={field} style={{ width: `${columns[index].width}%` }}>
                   {field === "id" ? (
                     <p>{pidx + 1 + (pageNumber - 1) * Number(PAGE_SIZE)}</p>
+                  ) : field === "title" ? (
+                    <a
+                      href={`https://scholar.google.co.kr/scholar?hl=ko&q=${publication.title}`}
+                      target="_blank"
+                    >
+                      <p>{publication.title}</p>
+                    </a>
                   ) : (
                     <p>{publication[field as keyof Publication]}</p>
                   )}
