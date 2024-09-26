@@ -1,7 +1,10 @@
-'use client';
+"use client";
+
 import { useState } from "react";
 import classes from "./CardList.module.css";
 import { Card } from "../Card";
+import { useDisclosure } from "@/hook/useDisclosure";
+import { DataModal } from "../DataModal";
 
 type Rating = {
   year: number;
@@ -32,16 +35,18 @@ const dummyPage1: Page = {
   data: Array.from({ length: 12 }, (_, index) => {
     return {
       id: index,
-      acronym: 'SOSP',
-      ratings: [{
-        year: 2024,
-        grade: 'top',
-      }],
+      acronym: "SOSP",
+      ratings: [
+        {
+          year: 2024,
+          grade: "top",
+        },
+      ],
       proportion: 16.4,
       average: 12.3,
-    }
-  })
-}
+    };
+  }),
+};
 
 const dummyPage2: Page = {
   pageNumber: 2,
@@ -51,19 +56,23 @@ const dummyPage2: Page = {
   data: Array.from({ length: 12 }, (_, index) => {
     return {
       id: index,
-      acronym: 'SECOND',
-      ratings: [{
-        year: 2023,
-        grade: 'excellence',
-      }],
+      acronym: "SECOND",
+      ratings: [
+        {
+          year: 2023,
+          grade: "excellence",
+        },
+      ],
       proportion: 12.4,
       average: 13.3,
-    }
-  })
-}
+    };
+  }),
+};
 
 export function CardList() {
   const [data, setData] = useState(dummyPage1.data);
+  const [conferenceId, setConferenceId] = useState(0);
+  const { open, setOpen, close } = useDisclosure();
 
   return (
     <div className={classes.root}>
@@ -72,15 +81,20 @@ export function CardList() {
         <span> 논문비율 순 </span>
       </div>
       <div className={classes.row}>
-        {
-          data.map((conference, index) => {
-            return (
-              <div key={index} className={classes.column}>
-                <Card item={conference} />
-              </div>
-            )
-          })
-        }
+        {data.map((conference, index) => {
+          return (
+            <div key={index} className={classes.column}>
+              <Card
+                item={conference}
+                onClick={() => {
+                  setConferenceId(conference.id);
+                  setOpen(true);
+                }}
+              />
+            </div>
+          );
+        })}
+        <DataModal open={open} onClose={close} conferenceId={conferenceId} withCloseButton />
       </div>
     </div>
   );
