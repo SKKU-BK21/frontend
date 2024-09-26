@@ -26,6 +26,7 @@ export function DataModal({
   fromYear = 2014,
   toYear = 2024,
 }: IDataModalProps) {
+  if (typeof window === "undefined") return null;
   // dialog element 참조를 위한 ref
   const dialogRef = useRef<HTMLDialogElement | null>(null);
 
