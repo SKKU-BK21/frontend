@@ -1,0 +1,44 @@
+.root {
+  padding: 60px;
+  border-right: 1px solid #e9ecef;
+}
+
+.categoryContainer {
+  margin-bottom: 60px;
+}
+
+.categoryTitle {
+  margin-bottom: 10px;
+}
+
+.ratingInput {
+  accent-color: #425e91;
+  margin-bottom: 8px;
+}
+
+.ratingLabel {
+  margin-left: 4px;
+  font-weight: 500;
+}
+
+.categoryItem {
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.categoryInput {
+  accent-color: #425e91;
+}
+
+.yearInput {
+  width: 90px;
+}
+
+.yearButton {
+  margin-left: 10px;
+  background-color: #425e91;
+  border: 0px;
+  border-radius: 6px;
+  padding: 4px;
+  color: #ffffff;
+}
