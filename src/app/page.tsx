@@ -1,15 +1,22 @@
-'use client';
+"use client";
 import { CardList } from "@/components/CardList";
 import { Sidebar } from "@/components/Sidebar";
 import classes from "./page.module.css";
 import { useState } from "react";
 
 export default function Home() {
-  const [isExcellentChecked, setIsExcellentChecked] = useState(false);
-  const [isGoodChecked, setIsGoodChecked] = useState(false);
-  const [categoryChecked, setCategoryChecked] = useState('total');
-  const [startYear, setStartYear] = useState('');
-  const [endYear, setEndYear] = useState('');
+  const [isExcellentChecked, setIsExcellentChecked] = useState(true);
+  const [isGoodChecked, setIsGoodChecked] = useState(true);
+  const [categoryChecked, setCategoryChecked] = useState<string[]>([
+    "AIML",
+    "ARCH",
+    "INFOSEC",
+    "NET",
+    "SYSDB",
+    "COMTH",
+  ]);
+  const [startYear, setStartYear] = useState(2014);
+  const [endYear, setEndYear] = useState(2024);
 
   return (
     <main className={classes.root}>
@@ -25,7 +32,7 @@ export default function Home() {
         endYear={endYear}
         setEndYear={setEndYear}
       />
-      <CardList 
+      <CardList
         isExcellentChecked={isExcellentChecked}
         isGoodChecked={isGoodChecked}
         categoryChecked={categoryChecked}

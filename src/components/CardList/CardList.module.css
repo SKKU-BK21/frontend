@@ -14,10 +14,35 @@
 .topFilter {
   font-weight: 700;
   text-align: right;
-  margin-top: 30px;
-  margin-bottom: 30px;
+  padding: 10px;
+  margin: 20px 0px 10px 10px;
+  
+  border-bottom: 1px solid #e9ecef;
 }
 
 .topFilter span {
   cursor: pointer;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+.pagination-icon {
+  cursor: pointer;
+  fill: currentColor;
+}
+
+.pagination-icon.disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.pagination span {
+  font-size: 20px;
 }

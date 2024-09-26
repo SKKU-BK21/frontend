@@ -1,6 +1,7 @@
 .cardContainer {
-  border: 1px solid #000000;
-  border-radius: 10px;
+  border: 2px solid #74777F;
+  border-radius: 12px;
+  background-color: #F9F9FF;
   margin: 20px;
   padding: 15px;
 }
@@ -18,7 +19,7 @@
 }
 
 .cardTitle {
-  font-size: 14pt;
+  font-size: 24px;
   font-weight: 700;
 }
 
@@ -47,4 +48,9 @@
 .blueArrow {
   color: #425E91;
   font-weight: 900;
+}
+
+.compare {
+  font-size: 18px;
+  font-weight: 500;
 }

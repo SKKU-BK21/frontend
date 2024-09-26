@@ -21,11 +21,11 @@ export function RatingBadge({
 }: IRatingBadgeProps) {
   return (
     <div
-      className={`${classes.container} ${rating === "top" ? classes.red : classes.blue}`}
+      className={`${classes.container} ${rating === "FIRST" ? classes.red : classes.blue}`}
       style={{ width: width, height: height, backgroundColor: backgroundColor }}
     >
       <div className={classes.element} style={{ color: color }}>
-        {`${year} ${rating === "top" ? "최우수" : "우수"}`}
+        {`${year} ${rating === "FIRST" ? "최우수" : "우수"}`}
       </div>
     </div>
   );

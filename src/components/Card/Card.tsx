@@ -44,7 +44,7 @@ export function Card({ item, onClick }: CardProps) {
         />
         <div className={classes.proportion}>{`${item.proportion}%`}</div>
       </div>
-      <div>
+      <div className={classes.compare}>
         전체 평균 대비 {Math.abs(deviation)}%{" "}
         {deviation > 0 ? (
           <span className={classes.redArrow}>↑</span>

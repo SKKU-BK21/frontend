@@ -3,6 +3,7 @@ import classes from "./DataTable.module.css";
 import { PagedApiResponse } from "@/types/common";
 import { Publication } from "@/types/conferences";
 import { DataTablePagination } from "./DataTablePagination";
+import { baseUrl } from "@/constants/baseUrl";
 
 export interface IDataTableProps {
   id: number;
@@ -17,7 +18,7 @@ export function DataTable({ id, render, fromYear, toYear }: IDataTableProps) {
     { id: 2, width: 300 },
     { id: 3, width: 100 },
     { id: 4, width: 100 },
-    { id: 5, width: 70 },
+    // { id: 5, width: 70 },
   ]);
   const [data, setData] = useState<Publication[]>();
   const [pageData, setPageData] = useState<PagedApiResponse<{}>>();
@@ -50,12 +51,14 @@ export function DataTable({ id, render, fromYear, toYear }: IDataTableProps) {
 
   useEffect(() => {
     const fetchData = async () => {
-      let url = `/api/conferences/${id}/publications?sort=${sortCriteria}&number=${pageNumber}&size=${PAGE_SIZE}`;
+      let url =
+        baseUrl +
+        `/conferences/${id}/publications?sort=${sortCriteria}&pageNumber=${pageNumber}&pageSize=${PAGE_SIZE}`;
       if (fromYear) {
-        url += `&fromYear=${fromYear}`;
+        url += `&fromyear=${fromYear}`;
       }
       if (toYear) {
-        url += `&toYear=${toYear}`;
+        url += `&toyear=${toYear}`;
       }
 
       const response = await fetch(url);
@@ -89,14 +92,14 @@ export function DataTable({ id, render, fromYear, toYear }: IDataTableProps) {
         >
           출판년도 순
         </span>
-        <span
+        {/* <span
           className={`${classes["sort-select"]} ${
             sortCriteria === "cite" ? classes["active"] : ""
           }`}
           onClick={() => handleSortChange("cite")}
         >
           인용수 순
-        </span>
+        </span> */}
       </div>
       <table className={classes["resizable-table"]}>
         <thead>
@@ -113,11 +116,15 @@ export function DataTable({ id, render, fromYear, toYear }: IDataTableProps) {
           </tr>
         </thead>
         <tbody>
-          {data?.map((publication) => (
+          {data?.map((publication, pidx) => (
             <tr key={publication.id}>
               {DATA_TABLE_FIELDS.map((field, index) => (
                 <td key={field} style={{ width: `${columns[index].width}%` }}>
-                  <p>{publication[field as keyof Publication]}</p>
+                  {field === "id" ? (
+                    <p>{pidx + 1 + (pageNumber - 1) * Number(PAGE_SIZE)}</p>
+                  ) : (
+                    <p>{publication[field as keyof Publication]}</p>
+                  )}
                 </td>
               ))}
             </tr>
@@ -134,7 +141,9 @@ export function DataTable({ id, render, fromYear, toYear }: IDataTableProps) {
   );
 }
 
-const DATA_TABLE_HEADER = ["순번", "논문 제목", "저자", "출판년도", "인용수"];
-const DATA_TABLE_FIELDS = ["id", "title", "authors", "publicationYear", "citationCount"];
+// const DATA_TABLE_HEADER = ["순번", "논문 제목", "저자", "출판년도", "인용수"];
+const DATA_TABLE_HEADER = ["순번", "논문 제목", "저자", "출판년도"];
+// const DATA_TABLE_FIELDS = ["id", "title", "authors", "publicationYear", "citationCount"];
+const DATA_TABLE_FIELDS = ["id", "title", "authors", "publicationYear"];
 const MIN_WIDTH = 50;
 const PAGE_SIZE = 5;

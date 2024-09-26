@@ -20,6 +20,6 @@ export interface Publication {
   id: number;
   title: string;
   authors: string[];
-  publicationYear: string;
+  publicationYear: number;
   citationCount: number;
 }

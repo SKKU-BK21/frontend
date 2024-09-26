@@ -4,6 +4,9 @@
   justify-content: space-around;
   height: 200px; /* 차트의 전체 높이 */
   width: 100%; /* 차트의 너비 */
+  overflow: hidden;
+  overflow-x: auto;
+  scrollbar-width: none;
   margin-top: 20px;
 }
 

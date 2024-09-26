@@ -1,5 +1,6 @@
 .root {
   padding: 60px;
+  border-right: 1px solid #e9ecef;
 }
 
 .categoryContainer {
@@ -12,6 +13,17 @@
 
 .ratingInput {
   accent-color: #425E91;
+  margin-bottom: 8px;
+}
+
+.ratingLabel {
+  margin-left: 4px;
+  font-weight: 500;
+}
+
+.categoryItem {
+  margin-bottom: 8px;
+  font-weight: 500;
 }
 
 .categoryInput {
