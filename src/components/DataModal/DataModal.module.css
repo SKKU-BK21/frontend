@@ -5,8 +5,8 @@
   position: fixed;
   overflow: hidden;
   resize: both;
-  max-width: 90vw; 
-  max-height: 90vh; 
+  max-width: 90vw;
+  max-height: 90vh;
   min-width: 200px;
   min-height: 200px;
   padding: 10px;

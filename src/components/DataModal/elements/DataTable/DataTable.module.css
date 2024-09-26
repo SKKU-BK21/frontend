@@ -4,13 +4,14 @@
   table-layout: fixed;
 }
 
-.resizable-table th, .resizable-table td {
+.resizable-table th,
+.resizable-table td {
   border: none;
   padding: 0px 8px;
   text-align: left;
   position: relative;
   height: 34px;
-  border-bottom: 1px #DEE2E6 solid;
+  border-bottom: 1px #dee2e6 solid;
   min-width: 0;
 }
 
@@ -30,7 +31,7 @@
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  margin: 0; 
+  margin: 0;
   max-width: 100%;
 }
 
@@ -48,9 +49,9 @@
 }
 
 .resize-handle::before {
-  content: '▼';
+  content: "▼";
   font-size: 10px;
-  color: #D9D9D9;
+  color: #d9d9d9;
   position: absolute;
   top: 50%;
   transform: translateY(-100%);
@@ -58,7 +59,7 @@
 }
 
 .resize-handle:hover::before {
-  color: #74777F;
+  color: #74777f;
 }
 
 .sort-container {
@@ -75,12 +76,12 @@
 
 .sort-select {
   font-size: 12px;
-  color: #74777F;
+  color: #74777f;
   cursor: pointer;
   font-weight: 400;
 }
 
 .sort-select.active {
-  color: #425E91;
+  color: #425e91;
   font-weight: 600;
 }

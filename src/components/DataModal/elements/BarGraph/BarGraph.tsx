@@ -9,7 +9,7 @@ export interface IBarGraphProps {
 
 export function BarGraph({ proportions, height }: IBarGraphProps) {
   const maxProportion = proportions ? Math.max(...proportions.map((item) => item.proportion)) : 0;
-  
+
   proportions?.sort((a, b) => {
     if (a.country == null) return 1;
     if (b.country == null) return -1;

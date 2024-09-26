@@ -1,7 +1,7 @@
 .cardContainer {
-  border: 2px solid #74777F;
+  border: 2px solid #74777f;
   border-radius: 12px;
-  background-color: #F9F9FF;
+  background-color: #f9f9ff;
   margin: 20px;
   padding: 15px;
 }
@@ -41,12 +41,12 @@
 }
 
 .redArrow {
-  color: #DA2E2E;
+  color: #da2e2e;
   font-weight: 900;
 }
 
 .blueArrow {
-  color: #425E91;
+  color: #425e91;
   font-weight: 900;
 }
 
