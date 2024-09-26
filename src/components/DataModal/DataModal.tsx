@@ -26,7 +26,7 @@ export function DataModal({
   fromYear = 2014,
   toYear = 2024,
 }: IDataModalProps) {
-  if (typeof window === "undefined") return null;
+  const [isClient, setIsClient] = useState(false);
   // dialog element 참조를 위한 ref
   const dialogRef = useRef<HTMLDialogElement | null>(null);
 
@@ -34,8 +34,8 @@ export function DataModal({
   const [dimensions, setDimensions] = useState({ width: 600, height: 800 });
 
   // 모달의 위치 및 초기 위치 계산
-  const windowWidth = window.innerWidth;
-  const windowHeight = window.innerHeight;
+  const [windowWidth, setWindowWidth] = useState(0);
+  const [windowHeight, setWindowHeight] = useState(0);
   const initialX = (windowWidth - dimensions.width) / 2;
   const initialY = (windowHeight - dimensions.height) / 2;
   const [position, setPosition] = useState({ x: initialX, y: initialY });
@@ -61,6 +61,17 @@ export function DataModal({
       fetchData();
     }
   }, [open, conferenceId, fromYear, toYear]);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setIsClient(true);
+      setWindowWidth(window.innerWidth);
+      setWindowHeight(window.innerHeight);
+      const initialX = (window.innerWidth - dimensions.width) / 2;
+      const initialY = (window.innerHeight - dimensions.height) / 2;
+      setPosition({ x: initialX, y: initialY });
+    }
+  }, [dimensions.width, dimensions.height]);
 
   useEffect(() => {
     if (open) {
@@ -155,6 +166,10 @@ export function DataModal({
   const handleCloseModal = () => {
     dialogRef.current?.close();
   };
+  
+  if (!isClient) {
+    return null;
+  }
 
   return (
     <dialog
