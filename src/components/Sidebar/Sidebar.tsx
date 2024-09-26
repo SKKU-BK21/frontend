@@ -1,14 +1,13 @@
 'use client';
-import { useState } from "react";
 import classes from "./Sidebar.module.css";
 
-export function Sidebar() {
-  const [isExcellentChecked, setIsExcellentChecked] = useState(false);
-  const [isGoodChecked, setIsGoodChecked] = useState(false);
-  const [categoryChecked, setCategoryChecked] = useState('total');
-  const [startYear, setStartYear] = useState('1999');
-  const [endYear, setEndYear] = useState('9999');
-
+export function Sidebar({
+  isExcellentChecked, setIsExcellentChecked,
+  isGoodChecked, setIsGoodChecked,
+  categoryChecked, setCategoryChecked,
+  startYear, setStartYear,
+  endYear, setEndYear,
+}: any) {
   const handleYear = async () => {
     if (isNaN(Number(startYear)) || isNaN(Number(startYear))) alert('검색 시작연도 및 종료연도는 숫자로 입력해주세요.');
     if (Number(endYear) < Number(startYear)) alert('검색 시작연도는 종료연도보다 작게 설정되어야 합니다.');
@@ -61,7 +60,7 @@ export function Sidebar() {
       <div className={classes.categoryContainer}>
         <div className={classes.categoryTitle}><h3>연도</h3></div>
         <input onChange={(e) => setStartYear(e.target.value)} className={classes.yearInput} type='text' /> - <input onChange={(e) => setEndYear(e.target.value)} className={classes.yearInput} type='text' />
-        <button onClick={handleYear} className={classes.yearButton}>검색</button>
+        {/* <button onClick={handleYear} className={classes.yearButton}>검색</button> */}
       </div>
     </div>
   );

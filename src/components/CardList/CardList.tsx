@@ -1,6 +1,4 @@
-"use client";
-
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import classes from "./CardList.module.css";
 import { Card } from "../Card";
 import { useDisclosure } from "@/hook/useDisclosure";
@@ -69,19 +67,49 @@ const dummyPage2: Page = {
   }),
 };
 
-export function CardList() {
+export function CardList({
+  isExcellentChecked,
+  isGoodChecked,
+  categoryChecked,
+  startYear,
+  endYear,
+}: any) {
   const [data, setData] = useState(dummyPage1.data);
   const [conferenceId, setConferenceId] = useState(0);
+  const [isAlphabeticalOrder, setIsAlphabeticalOrder] = useState(false);
+  const [isRatioOrder, setIsRatioOrder] = useState(false);
   const { open, setOpen, close } = useDisclosure();
+
+  useEffect(() => {
+    const updatedData = dummyPage1.data
+    const filteredData = updatedData
+      .filter((conference) => isExcellentChecked ? conference.ratings.some((rating)=>rating.grade=="top") : true)
+      .filter((conference) => isGoodChecked ? conference.ratings.some((rating)=>rating.grade=="excellence") : true)
+      //.filter((conference) => conference.category == categoryChecked )
+      .filter((conference) => startYear ? conference.ratings.some((rating)=>rating.year >= startYear) : true)
+      .filter((conference) => endYear ? conference.ratings.some((rating)=>rating.year <= endYear) : true)
+      .sort((a, b) => a.acronym.localeCompare(b.acronym, undefined, {sensitivity: 'base'}))
+      .sort((a, b) => a.proportion - b.proportion)
+    setData(filteredData)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [
+    isExcellentChecked,
+    isGoodChecked,
+    categoryChecked,
+    startYear,
+    endYear,
+    isAlphabeticalOrder,
+    isRatioOrder
+  ])
 
   return (
     <div className={classes.root}>
       <div className={classes.topFilter}>
-        <span> 알파벳 순 | </span>
-        <span> 논문비율 순 </span>
+        <span onClick={() => {setIsAlphabeticalOrder(true); setIsRatioOrder(false)}}> 알파벳 순 | </span>
+        <span onClick={() => {setIsRatioOrder(true); setIsAlphabeticalOrder(false)}}> 논문비율 순 </span>
       </div>
       <div className={classes.row}>
-        {data.map((conference, index) => {
+        {data.length ? data.map((conference, index) => {
           return (
             <div key={index} className={classes.column}>
               <Card
@@ -93,7 +121,7 @@ export function CardList() {
               />
             </div>
           );
-        })}
+        }) : "조회된 컨퍼런스가 없습니다."}
         <DataModal open={open} onClose={close} conferenceId={conferenceId} withCloseButton />
       </div>
     </div>
