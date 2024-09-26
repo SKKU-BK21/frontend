@@ -28,6 +28,8 @@ export function DataTable({ id, render, fromYear, toYear }: IDataTableProps) {
   const [pageNumber, setPageNumber] = useState(1);
 
   const handleMouseDown = (index: number, event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    if (typeof window === "undefined") return;
+
     const startX = event.clientX;
     const startWidth = columns[index].width;
 
