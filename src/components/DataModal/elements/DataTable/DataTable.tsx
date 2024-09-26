@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useEffect, useState } from "react";
 import classes from "./DataTable.module.css";
 import { PagedApiResponse } from "@/types/common";
