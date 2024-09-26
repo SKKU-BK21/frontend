@@ -7,6 +7,7 @@ import { Conference } from "@/types/conferences";
 import { BarGraph } from "./elements";
 import { RatingBadge } from "../RatingBadge";
 import { DataTable } from "./elements";
+import { baseUrl } from "@/constants/baseUrl";
 
 export interface IDataModalProps {
   conferenceId: number;
@@ -22,8 +23,8 @@ export function DataModal({
   open,
   onClose,
   withCloseButton,
-  fromYear,
-  toYear,
+  fromYear = 2014,
+  toYear = 2024,
 }: IDataModalProps) {
   // dialog element 참조를 위한 ref
   const dialogRef = useRef<HTMLDialogElement | null>(null);
@@ -48,7 +49,9 @@ export function DataModal({
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch(`/api/conferences/${conferenceId}`);
+      const response = await fetch(
+        baseUrl + `/conferences/${conferenceId}?fromyear=${fromYear}&toyear=${toYear}`
+      );
       const data = await response.json();
       setData(data);
     };
@@ -56,7 +59,7 @@ export function DataModal({
     if (open) {
       fetchData();
     }
-  }, [open, conferenceId]);
+  }, [open, conferenceId, fromYear, toYear]);
 
   useEffect(() => {
     if (open) {

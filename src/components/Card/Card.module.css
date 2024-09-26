@@ -1,0 +1,56 @@
+.cardContainer {
+  border: 2px solid #74777f;
+  border-radius: 12px;
+  background-color: #f9f9ff;
+  margin: 20px;
+  padding: 15px;
+}
+
+.ratio {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+.proportion {
+  margin-right: 10px;
+  font-size: 30pt;
+  font-weight: 700;
+}
+
+.cardTitle {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.ps {
+  padding: 8px 0px;
+}
+
+.pm {
+  padding: 16px 0px;
+}
+
+.pl {
+  padding: 24px 0px;
+}
+
+.gap {
+  display: flex;
+  gap: 8px;
+}
+
+.redArrow {
+  color: #da2e2e;
+  font-weight: 900;
+}
+
+.blueArrow {
+  color: #425e91;
+  font-weight: 900;
+}
+
+.compare {
+  font-size: 18px;
+  font-weight: 500;
+}
