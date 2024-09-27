@@ -50,9 +50,10 @@ export function CardList({
 
   useEffect(() => {
     const fetchData = async () => {
-      const categoryParams = categoryChecked
-        .map((category) => `category=${encodeURIComponent(category)}`)
-        .join("&");
+      // const categoryParams = categoryChecked
+      //   .map((category) => `category=${encodeURIComponent(category)}`)
+      //   .join("&");
+      const categoryParams = '';
       const response = await fetch(
         baseUrl +
           `/conferences?sort=${sortBy}&fromyear=${startYear}&toyear=${endYear}&pageSize=${PAGE_SIZE}&pageNumber=${page}&grade=${
@@ -95,7 +96,7 @@ export function CardList({
         </span>
       </div>
       <div className={classes.row}>
-        {data.length > 0 &&
+        {data && data.length > 0 ?
           data.map((conference, index) => {
             return (
               <div key={index} className={classes.column}>
@@ -108,7 +109,7 @@ export function CardList({
                 />
               </div>
             );
-          })}
+          }) : <div className={classes.noDataMessage}>조회된 컨퍼런스가 없습니다.</div>}
         <DataModal open={open} onClose={close} conferenceId={conferenceId} withCloseButton />
       </div>
       <div className={classes.pagination}>

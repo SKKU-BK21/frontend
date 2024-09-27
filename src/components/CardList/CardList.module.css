@@ -46,3 +46,7 @@
 .pagination span {
   font-size: 20px;
 }
+
+.noDataMessage {
+  padding: 30px;
+}
