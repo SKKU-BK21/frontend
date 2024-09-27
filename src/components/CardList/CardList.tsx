@@ -50,10 +50,9 @@ export function CardList({
 
   useEffect(() => {
     const fetchData = async () => {
-      // const categoryParams = categoryChecked
-      //   .map((category) => `category=${encodeURIComponent(category)}`)
-      //   .join("&");
-      const categoryParams = '';
+      const categoryParams = categoryChecked
+        .map((category) => `category=${encodeURIComponent(category)}`)
+        .join("&");
       const response = await fetch(
         baseUrl +
           `/conferences?sort=${sortBy}&fromyear=${startYear}&toyear=${endYear}&pageSize=${PAGE_SIZE}&pageNumber=${page}&grade=${

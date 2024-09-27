@@ -13,23 +13,11 @@ export function Sidebar({
   endYear,
   setEndYear,
 }: any) {
-  const handleYear = async () => {
-    if (isNaN(Number(startYear)) || isNaN(Number(startYear)))
-      alert("검색 시작연도 및 종료연도는 숫자로 입력해주세요.");
-    if (Number(endYear) < Number(startYear))
-      alert("검색 시작연도는 종료연도보다 작게 설정되어야 합니다.");
-    const startY = Number(startYear);
-    const endY = Number(endYear);
-    console.log(startY);
-    console.log(endY);
-  };
-
   interface CategoryData {
     [key: string]: string;
   }
 
   const categoryData: CategoryData = {
-    TOTAL: "전체",
     AIML: "AI / ML",
     ARCH: "컴퓨터 구조",
     INFOSEC: "정보보안",
@@ -78,11 +66,17 @@ export function Sidebar({
             <div key={category} className={classes.categoryItem}>
               <input
                 className={classes.categoryInput}
-                onChange={(e) => setCategoryChecked(e.target.value)}
-                type="radio"
+                onChange={(e) => {
+                  if (e.target.checked) {
+                    setCategoryChecked([...categoryChecked ,e.target.value]);
+                  } else {
+                    setCategoryChecked(categoryChecked.filter((item: string) => item !== e.target.value));
+                  }
+                }}
+                type="checkbox"
                 id={category}
                 value={category}
-                checked={categoryChecked == category ? true : false}
+                checked={categoryChecked.includes(category) ? true : false}
               />
               <label htmlFor="category"> {categoryData[category]}</label>
             </div>
@@ -104,7 +98,6 @@ export function Sidebar({
           className={classes.yearInput}
           type="number"
         />
-        {/* <button onClick={handleYear} className={classes.yearButton}>검색</button> */}
       </div>
     </div>
   );
