@@ -1,6 +1,6 @@
 export interface Rating {
   year: number;
-  rating: "FIRST" | "SECOND";
+  grade: "FIRST" | "SECOND";
 }
 
 export interface Proportion {

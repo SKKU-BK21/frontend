@@ -207,7 +207,7 @@ export function DataModal({
             <h3 className={classes.fullName}>{data.fullName}</h3>
             <div className={`${classes.gap} ${classes.ps}`}>
               {data.ratings.map((item, index) => (
-                <RatingBadge key={index} year={item.year} rating={item.rating} />
+                <RatingBadge key={index} year={item.year} rating={item.grade} />
               ))}
             </div>
             <div className={classes.pl}>
