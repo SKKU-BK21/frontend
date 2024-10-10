@@ -1,6 +1,7 @@
 import { Proportion } from "@/types/conferences";
 import classes from "./BarGraph.module.css";
 import Image from "next/image";
+import { countryToName } from "@/constants/country";
 
 export interface IBarGraphProps {
   proportions: Proportion[];
@@ -35,7 +36,9 @@ export function BarGraph({ proportions, height }: IBarGraphProps) {
               />
             )}
           </div>
-          <span className={classes.label}>{item.country == null ? "미분류" : item.country}</span>
+          <span className={classes.label}>
+            {item.country == null ? "미분류" : countryToName[item.country]}
+          </span>
         </div>
       ))}
     </div>
