@@ -1,5 +1,6 @@
 "use client";
 
+import { Flag } from "../Flag/Flag";
 import { RatingBadge } from "../RatingBadge";
 import classes from "./Card.module.css";
 import Image from "next/image";
@@ -34,14 +35,7 @@ export function Card({ item, onClick }: CardProps) {
         ))}
       </div>
       <div className={classes.ratio}>
-        <Image
-          src={"/kor.png"}
-          alt="태극기"
-          className={classes["flag-image"]}
-          width={72}
-          height={48}
-          objectFit="contain"
-        />
+        <Flag width={72}/>
         <div className={classes.proportion}>{`${item.proportion}%`}</div>
       </div>
       <div className={classes.compare}>

@@ -2,6 +2,7 @@ import { Proportion } from "@/types/conferences";
 import classes from "./BarGraph.module.css";
 import Image from "next/image";
 import { countryToName } from "@/constants/country";
+import { Flag } from "@/components/Flag/Flag";
 
 export interface IBarGraphProps {
   proportions: Proportion[];
@@ -26,15 +27,7 @@ export function BarGraph({ proportions, height }: IBarGraphProps) {
               height: `${(item.proportion / maxProportion) * 150}%`,
             }}
           >
-            {item.country === "kr" && (
-              <Image
-                src={"/kor.png"}
-                alt="태극기"
-                className={classes["flag-image"]}
-                width={50}
-                height={34}
-              />
-            )}
+            {item.country === "kr" && <Flag width={50} className={classes["flag-image"]}/>}
           </div>
           <span className={classes.label}>
             {item.country == null ? "미분류" : countryToName[item.country]}

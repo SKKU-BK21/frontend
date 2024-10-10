@@ -1,0 +1,7 @@
+.outline{
+  display: flex;
+  border: 2px solid #74777F;
+  margin: 0;
+  padding: 0;
+  height: fit-content;
+}
