@@ -42,6 +42,7 @@ export function CardList({
   endYear = 2024,
 }: CardListProps) {
   const [data, setData] = useState<Conference[]>([]);
+  const [pageData, setPageData] = useState<Page>();
   const [conferenceId, setConferenceId] = useState(0);
   const [sortBy, setSortBy] = useState("alphabet");
   const [page, setPage] = useState(1);
@@ -61,6 +62,8 @@ export function CardList({
       );
       const jsonResponse = (await response.json()) as Page;
       setData(jsonResponse.data);
+      setPageData(jsonResponse);
+      console.log(jsonResponse.data);
     };
 
     fetchData();
@@ -72,6 +75,10 @@ export function CardList({
 
   const handleNextPage = () => {
     setPage((prevPage) => prevPage + 1);
+  };
+
+  const handlePageClick = (pageNumber: number) => {
+    setPage(pageNumber);
   };
 
   return (
@@ -95,7 +102,7 @@ export function CardList({
         </span>
       </div>
       <div className={classes.row}>
-        {data && data.length > 0 ?
+        {data && data.length > 0 ? (
           data.map((conference, index) => {
             return (
               <div key={index} className={classes.column}>
@@ -108,7 +115,10 @@ export function CardList({
                 />
               </div>
             );
-          }) : <div className={classes.noDataMessage}>조회된 컨퍼런스가 없습니다.</div>}
+          })
+        ) : (
+          <div className={classes.noDataMessage}>조회된 컨퍼런스가 없습니다.</div>
+        )}
         <DataModal open={open} onClose={close} conferenceId={conferenceId} withCloseButton />
       </div>
       <div className={classes.pagination}>
@@ -123,7 +133,18 @@ export function CardList({
         >
           <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
         </svg>
-        <span>{page}</span>
+        {pageData &&
+          Array.from({ length: pageData.totalPages }, (_, index) => (
+            <div
+              key={index}
+              className={`${classes["pagination-item"]} ${
+                page === index + 1 ? classes["active"] : ""
+              }`}
+              onClick={() => handlePageClick(index + 1)}
+            >
+              {index + 1}
+            </div>
+          ))}
         <svg
           onClick={handleNextPage}
           className={classes["pagination-icon"]}
