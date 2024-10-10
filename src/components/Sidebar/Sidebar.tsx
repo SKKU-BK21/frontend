@@ -87,17 +87,29 @@ export function Sidebar({
         <div className={classes.categoryTitle}>
           <h3>연도</h3>
         </div>
-        <input
-          onChange={(e) => setStartYear(e.target.value)}
-          className={classes.yearInput}
-          type="number"
-        />{" "}
+        <select
+          onChange={(e) => setStartYear(Number(e.target.value))}
+          className={classes.yearSelect}
+          value={startYear}
+        >
+          {Array.from({ length: 2024 - 2014 + 1 }, (_, index) => (
+            <option key={index} value={2014 + index}>
+              {2014 + index}
+            </option>
+          ))}
+        </select>{" "}
         -{" "}
-        <input
-          onChange={(e) => setEndYear(e.target.value)}
-          className={classes.yearInput}
-          type="number"
-        />
+        <select
+          onChange={(e) => setEndYear(Number(e.target.value))}
+          className={classes.yearSelect}
+          value={endYear}
+        >
+          {Array.from({ length: 2024 - 2014 + 1 }, (_, index) => (
+            <option key={index} value={2014 + index}>
+              {2014 + index}
+            </option>
+          ))}
+        </select>
       </div>
     </div>
   );
