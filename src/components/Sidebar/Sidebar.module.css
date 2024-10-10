@@ -42,3 +42,10 @@
   padding: 4px;
   color: #ffffff;
 }
+
+.yearSelect {
+  width: 4.8vw;
+  min-width: 40px; 
+  height: 1.6vw;
+  font-size: 16px;
+}

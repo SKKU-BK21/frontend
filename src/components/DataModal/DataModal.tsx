@@ -54,6 +54,7 @@ export function DataModal({
         baseUrl + `/conferences/${conferenceId}?fromyear=${fromYear}&toyear=${toYear}`
       );
       const data = await response.json();
+      console.log(data);
       setData(data);
     };
 
