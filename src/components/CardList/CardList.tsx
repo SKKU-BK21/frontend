@@ -4,6 +4,7 @@ import { Card } from "../Card";
 import { useDisclosure } from "@/hook/useDisclosure";
 import { DataModal } from "../DataModal";
 import { baseUrl } from "@/constants/baseUrl";
+import TopFilter from "../TopFilter/TopFilter";
 
 type Rating = {
   year: number;
@@ -32,6 +33,11 @@ interface CardListProps {
   categoryChecked: string[];
   startYear?: number;
   endYear?: number;
+  setIsExcellentChecked?: (value: boolean) => void;
+  setIsGoodChecked?: (value: boolean) => void;
+  setCategoryChecked?: (value: string[]) => void;
+  setStartYear?: (value: number) => void;
+  setEndYear?: (value: number) => void;
 }
 
 export function CardList({
@@ -40,11 +46,16 @@ export function CardList({
   categoryChecked,
   startYear = 2014,
   endYear = 2024,
+  setIsExcellentChecked,
+  setIsGoodChecked,
+  setCategoryChecked,
+  setStartYear,
+  setEndYear,
 }: CardListProps) {
   const [data, setData] = useState<Conference[]>([]);
   const [pageData, setPageData] = useState<Page>();
   const [conferenceId, setConferenceId] = useState(0);
-  const [sortBy, setSortBy] = useState("alphabet");
+  const [sortBy, setSortBy] = useState("percentage");
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
   const { open, setOpen, close } = useDisclosure();
@@ -83,24 +94,20 @@ export function CardList({
 
   return (
     <div className={classes.root}>
-      <div className={classes.topFilter}>
-        <span
-          onClick={() => {
-            setSortBy("alphabet");
-          }}
-        >
-          {" "}
-          알파벳 순 |{" "}
-        </span>
-        <span
-          onClick={() => {
-            setSortBy("percentage");
-          }}
-        >
-          {" "}
-          논문비율 순{" "}
-        </span>
-      </div>
+      <TopFilter
+        sortBy={sortBy}
+        setSortBy={setSortBy}
+        isExcellentChecked={isExcellentChecked}
+        isGoodChecked={isGoodChecked}
+        categoryChecked={categoryChecked}
+        startYear={startYear}
+        endYear={endYear}
+        setIsExcellentChecked={setIsExcellentChecked ? setIsExcellentChecked : () => {}}
+        setIsGoodChecked={setIsGoodChecked ? setIsGoodChecked : () => {}}
+        setCategoryChecked={setCategoryChecked ? setCategoryChecked : () => {}}
+        setStartYear={setStartYear ? setStartYear : () => {}}
+        setEndYear={setEndYear ? setEndYear : () => {}}
+      />
       <div className={classes.row}>
         {data && data.length > 0 ? (
           data.map((conference, index) => {
