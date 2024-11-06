@@ -34,10 +34,15 @@ export default function Home() {
       />
       <CardList
         isExcellentChecked={isExcellentChecked}
+        setIsExcellentChecked={setIsExcellentChecked}
         isGoodChecked={isGoodChecked}
+        setIsGoodChecked={setIsGoodChecked}
         categoryChecked={categoryChecked}
+        setCategoryChecked={setCategoryChecked}
         startYear={startYear}
+        setStartYear={setStartYear}
         endYear={endYear}
+        setEndYear={setEndYear}
       />
     </main>
   );
