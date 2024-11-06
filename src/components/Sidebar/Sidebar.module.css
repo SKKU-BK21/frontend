@@ -1,10 +1,15 @@
 .root {
-  padding: 60px;
+  width: 300px;
+  padding: 60px 42px;
   border-right: 1px solid #e9ecef;
 }
 
-.categoryContainer {
-  margin-bottom: 60px;
+.filterContainer {
+  margin-bottom: 40px;
+  background-color: #ffffff;
+  padding: 24px 24px;
+  border-radius: 12px;
+  border: 0.5px solid #e9ecef;
 }
 
 .categoryTitle {
@@ -13,21 +18,98 @@
 
 .ratingInput {
   accent-color: #425e91;
-  margin-bottom: 8px;
 }
 
 .ratingLabel {
-  margin-left: 4px;
   font-weight: 500;
 }
+.ratingLabel:hover {
+  cursor: pointer;
+}
 
-.categoryItem {
+.checkboxItem {
   margin-bottom: 8px;
+  padding: 2px;
   font-weight: 500;
+  gap: 8px;
+  display: flex;
+  align-items: center;
+  border-radius: 4px;
+}
+.red {
+  background-color: #c24b4bb5;
+}
+.red:hover {
+  background-color: #c24b4b;
+  cursor: pointer;
+}
+.blue {
+  background-color: #425e91b5;
+}
+.blue:hover {
+  background-color: #425e91;
+  cursor: pointer;
+}
+
+.lightblue {
+  background-color: #b3c7e2b5;
+}
+.lightblue:hover {
+  background-color: #b3c7e2;
+  cursor: pointer;
+}
+
+.brown {
+  background-color: #8b4513b5;
+}
+.brown:hover {
+  background-color: #8b4513;
+  cursor: pointer;
+}
+
+.lightgreen {
+  background-color: #90ee90b5;
+}
+.lightgreen:hover {
+  background-color: #90ee90;
+  cursor: pointer;
+}
+
+.orange {
+  background-color: #ff8c00b5;
+}
+.orange:hover {
+  background-color: #ff8c00;
+  cursor: pointer;
+}
+
+.lightred {
+  background-color: #ff6347b5;
+}
+.lightred:hover {
+  background-color: #ff6347;
+  cursor: pointer;
+}
+
+.lightpurple {
+  background-color: #9370dbb5;
+}
+.lightpurple:hover {
+  background-color: #9370db;
+  cursor: pointer;
 }
 
 .categoryInput {
   accent-color: #425e91;
+}
+.categoryInput:hover {
+  cursor: pointer;
+}
+
+.categoryText {
+}
+.categoryText:hover {
+  cursor: pointer;
 }
 
 .yearInput {
@@ -45,7 +127,7 @@
 
 .yearSelect {
   width: 4.8vw;
-  min-width: 40px; 
+  min-width: 40px;
   height: 1.6vw;
   font-size: 16px;
 }

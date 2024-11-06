@@ -1,0 +1,146 @@
+.topFilter {
+  padding: 18px;
+  margin: 20px 10px 10px 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: space-between;
+
+  background-color: #ffffff;
+  border-radius: 8px;
+}
+
+.sort {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  white-space: nowrap;
+}
+.sortText {
+  padding: 0px 4px;
+  border-radius: 4px;
+}
+.sortText:hover {
+  background-color: #f5f5f5;
+  cursor: pointer;
+}
+.sortActive {
+  font-weight: 700;
+  color: #2c5cb4;
+}
+
+.divider {
+  font-weight: 200;
+  color: #6c757d;
+}
+
+.statusContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+}
+
+.allClear {
+  color: #6c757d;
+  font-weight: 400;
+  font-size: 14px;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+
+  background-color: #feb9b9;
+  border-radius: 40px;
+  padding: 4px 8px;
+
+  white-space: nowrap;
+}
+
+.allClear:hover {
+  cursor: pointer;
+  background-color: #fca5a5;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  font-weight: 400;
+  font-size: 14px;
+  gap: 2px;
+  padding: 4px 8px;
+  margin-right: 5px;
+  background-color: #e0e0e0;
+  border-radius: 16px;
+  cursor: pointer;
+
+  white-space: nowrap;
+}
+
+.chip:hover {
+  background-color: #d0d0d0;
+}
+
+.red {
+  background-color: #c24b4bb5;
+}
+.red:hover {
+  background-color: #c24b4b;
+  cursor: pointer;
+}
+.blue {
+  background-color: #425e91b5;
+}
+.blue:hover {
+  background-color: #425e91;
+  cursor: pointer;
+}
+
+.lightblue {
+  background-color: #b3c7e2b5;
+}
+.lightblue:hover {
+  background-color: #b3c7e2;
+  cursor: pointer;
+}
+
+.brown {
+  background-color: #8b4513b5;
+}
+.brown:hover {
+  background-color: #8b4513;
+  cursor: pointer;
+}
+
+.lightgreen {
+  background-color: #90ee90b5;
+}
+.lightgreen:hover {
+  background-color: #90ee90;
+  cursor: pointer;
+}
+
+.orange {
+  background-color: #ff8c00b5;
+}
+.orange:hover {
+  background-color: #ff8c00;
+  cursor: pointer;
+}
+
+.lightred {
+  background-color: #ff6347b5;
+}
+.lightred:hover {
+  background-color: #ff6347;
+  cursor: pointer;
+}
+
+.lightpurple {
+  background-color: #9370dbb5;
+}
+.lightpurple:hover {
+  background-color: #9370db;
+  cursor: pointer;
+}

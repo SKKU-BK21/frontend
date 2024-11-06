@@ -1,5 +1,22 @@
 "use client";
+
+import RangeSlider from "../RangeSlider/RangeSlider";
 import classes from "./Sidebar.module.css";
+
+export interface CategoryData {
+  [key: string]: {
+    text: string;
+    color: string;
+  };
+}
+export const categoryData: CategoryData = {
+  AIML: { text: "AI / ML", color: "lightpurple" },
+  ARCH: { text: "컴퓨터 구조", color: "lightblue" },
+  INFOSEC: { text: "정보보안", color: "lightgreen" },
+  NET: { text: "네트워크", color: "orange" },
+  SYSDB: { text: "시스템 / 데이터베이스", color: "brown" },
+  COMTH: { text: "컴퓨팅 이론", color: "lightred" },
+};
 
 export function Sidebar({
   isExcellentChecked,
@@ -13,26 +30,16 @@ export function Sidebar({
   endYear,
   setEndYear,
 }: any) {
-  interface CategoryData {
-    [key: string]: string;
-  }
-
-  const categoryData: CategoryData = {
-    AIML: "AI / ML",
-    ARCH: "컴퓨터 구조",
-    INFOSEC: "정보보안",
-    NET: "네트워크",
-    SYSDB: "시스템 / 데이터베이스",
-    COMTH: "컴퓨팅 이론",
-  };
-
   return (
     <div className={classes.root}>
-      <div className={classes.categoryContainer}>
+      <div className={classes.filterContainer}>
         <div className={classes.categoryTitle}>
-          <h3>등급</h3>
+          <h3>학회 등급</h3>
         </div>
-        <div>
+        <div
+          className={`${classes.checkboxItem} ${classes.red}`}
+          onClick={() => setIsExcellentChecked(!isExcellentChecked)}
+        >
           <input
             className={classes.ratingInput}
             onChange={(e) => setIsExcellentChecked(e.target.checked)}
@@ -40,11 +47,17 @@ export function Sidebar({
             id="excellent"
             checked={isExcellentChecked}
           />
-          <label className={classes.ratingLabel} htmlFor="excellent">
+          <label
+            className={classes.ratingLabel}
+            onClick={() => setIsExcellentChecked(!isExcellentChecked)}
+          >
             최우수
           </label>
         </div>
-        <div>
+        <div
+          className={`${classes.checkboxItem} ${classes.blue}`}
+          onClick={() => setIsGoodChecked(!isGoodChecked)}
+        >
           <input
             className={classes.ratingInput}
             onChange={(e) => setIsGoodChecked(e.target.checked)}
@@ -52,25 +65,37 @@ export function Sidebar({
             id="good"
             checked={isGoodChecked}
           />
-          <label className={classes.ratingLabel} htmlFor="good">
+          <label className={classes.ratingLabel} onClick={() => setIsGoodChecked(!isGoodChecked)}>
             우수
           </label>
         </div>
       </div>
-      <div className={classes.categoryContainer}>
+      <div className={classes.filterContainer}>
         <div className={classes.categoryTitle}>
           <h3>카테고리</h3>
         </div>
-        {Object.keys(categoryData).map((category, index) => {
+        {Object.keys(categoryData).map((category) => {
           return (
-            <div key={category} className={classes.categoryItem}>
+            <div
+              key={category}
+              className={`${classes.checkboxItem} ${classes[categoryData[category].color]}`}
+              onClick={() => {
+                if (categoryChecked.includes(category)) {
+                  setCategoryChecked(categoryChecked.filter((item: string) => item !== category));
+                } else {
+                  setCategoryChecked([...categoryChecked, category]);
+                }
+              }}
+            >
               <input
                 className={classes.categoryInput}
                 onChange={(e) => {
                   if (e.target.checked) {
-                    setCategoryChecked([...categoryChecked ,e.target.value]);
+                    setCategoryChecked([...categoryChecked, e.target.value]);
                   } else {
-                    setCategoryChecked(categoryChecked.filter((item: string) => item !== e.target.value));
+                    setCategoryChecked(
+                      categoryChecked.filter((item: string) => item !== e.target.value)
+                    );
                   }
                 }}
                 type="checkbox"
@@ -78,38 +103,21 @@ export function Sidebar({
                 value={category}
                 checked={categoryChecked.includes(category) ? true : false}
               />
-              <label htmlFor="category"> {categoryData[category]}</label>
+              <label className={classes.categoryText}>{categoryData[category].text}</label>
             </div>
           );
         })}
       </div>
-      <div className={classes.categoryContainer}>
+      <div className={classes.filterContainer} style={{ paddingBottom: "50px" }}>
         <div className={classes.categoryTitle}>
           <h3>연도</h3>
         </div>
-        <select
-          onChange={(e) => setStartYear(Number(e.target.value))}
-          className={classes.yearSelect}
-          value={startYear}
-        >
-          {Array.from({ length: 2024 - 2014 + 1 }, (_, index) => (
-            <option key={index} value={2014 + index}>
-              {2014 + index}
-            </option>
-          ))}
-        </select>{" "}
-        -{" "}
-        <select
-          onChange={(e) => setEndYear(Number(e.target.value))}
-          className={classes.yearSelect}
-          value={endYear}
-        >
-          {Array.from({ length: 2024 - 2014 + 1 }, (_, index) => (
-            <option key={index} value={2014 + index}>
-              {2014 + index}
-            </option>
-          ))}
-        </select>
+        <RangeSlider
+          startYear={startYear}
+          endYear={endYear}
+          setStartYear={setStartYear}
+          setEndYear={setEndYear}
+        />
       </div>
     </div>
   );
