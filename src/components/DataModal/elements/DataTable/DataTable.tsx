@@ -24,7 +24,7 @@ export function DataTable({ id, render, fromYear, toYear }: IDataTableProps) {
   ]);
   const [data, setData] = useState<Publication[]>();
   const [pageData, setPageData] = useState<PagedApiResponse<{}>>();
-  const [sortCriteria, setSortCriteria] = useState("alphabet");
+  const [sortCriteria, setSortCriteria] = useState("year");
   const [pageNumber, setPageNumber] = useState(1);
 
   const handleMouseDown = (index: number, event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
@@ -82,19 +82,19 @@ export function DataTable({ id, render, fromYear, toYear }: IDataTableProps) {
         <span>정렬 기준</span>
         <span
           className={`${classes["sort-select"]} ${
-            sortCriteria === "alphabet" ? classes["active"] : ""
-          }`}
-          onClick={() => handleSortChange("alphabet")}
-        >
-          알파벳 순
-        </span>
-        <span
-          className={`${classes["sort-select"]} ${
             sortCriteria === "year" ? classes["active"] : ""
           }`}
           onClick={() => handleSortChange("year")}
         >
           출판년도 순
+        </span>
+        <span
+          className={`${classes["sort-select"]} ${
+            sortCriteria === "alphabet" ? classes["active"] : ""
+          }`}
+          onClick={() => handleSortChange("alphabet")}
+        >
+          알파벳 순
         </span>
         {/* <span
           className={`${classes["sort-select"]} ${
