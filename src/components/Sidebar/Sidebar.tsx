@@ -11,12 +11,12 @@ export interface CategoryData {
   };
 }
 export const categoryData: CategoryData = {
-  AIML: { text: "AI / ML", color: "lightpurple" },
-  ARCH: { text: "컴퓨터 구조", color: "lightblue" },
-  INFOSEC: { text: "정보보안", color: "lightgreen" },
-  NET: { text: "네트워크", color: "orange" },
-  SYSDB: { text: "시스템 / 데이터베이스", color: "brown" },
-  COMTH: { text: "컴퓨팅 이론", color: "lightred" },
+  AIML: { text: "🧠 AI / ML", color: "lightpurple" },
+  ARCH: { text: "🖥️ 컴퓨터 구조", color: "lightblue" },
+  INFOSEC: { text: "🔒 정보보안", color: "lightgreen" },
+  NET: { text: "🌐 네트워크", color: "orange" },
+  SYSDB: { text: "🏠 시스템 / 데이터베이스", color: "brown" },
+  COMTH: { text: "🎓 컴퓨팅 이론", color: "lightred" },
 };
 
 export function Sidebar({
@@ -54,7 +54,7 @@ export function Sidebar({
             className={classes.ratingLabel}
             onClick={() => setIsExcellentChecked(!isExcellentChecked)}
           >
-            최우수
+            🥇 최우수
           </label>
         </div>
         <div
@@ -69,7 +69,7 @@ export function Sidebar({
             checked={isGoodChecked}
           />
           <label className={classes.ratingLabel} onClick={() => setIsGoodChecked(!isGoodChecked)}>
-            우수
+            🥈 우수
           </label>
         </div>
       </div>
