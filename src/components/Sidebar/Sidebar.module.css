@@ -23,6 +23,7 @@
 .ratingLabel {
   font-weight: 500;
 }
+
 .ratingLabel:hover {
   cursor: pointer;
 }
@@ -36,16 +37,20 @@
   align-items: center;
   border-radius: 4px;
 }
+
 .red {
   background-color: #c24b4bb5;
 }
+
 .red:hover {
   background-color: #c24b4b;
   cursor: pointer;
 }
+
 .blue {
   background-color: #425e91b5;
 }
+
 .blue:hover {
   background-color: #425e91;
   cursor: pointer;
@@ -54,22 +59,25 @@
 .lightblue {
   background-color: #b3c7e2b5;
 }
+
 .lightblue:hover {
   background-color: #b3c7e2;
   cursor: pointer;
 }
 
 .brown {
-  background-color: #8b4513b5;
+  background-color: #E1DACA;
 }
+
 .brown:hover {
-  background-color: #8b4513;
+  background-color: #E1DACA;
   cursor: pointer;
 }
 
 .lightgreen {
   background-color: #90ee90b5;
 }
+
 .lightgreen:hover {
   background-color: #90ee90;
   cursor: pointer;
@@ -78,6 +86,7 @@
 .orange {
   background-color: #ff8c00b5;
 }
+
 .orange:hover {
   background-color: #ff8c00;
   cursor: pointer;
@@ -86,6 +95,7 @@
 .lightred {
   background-color: #ff6347b5;
 }
+
 .lightred:hover {
   background-color: #ff6347;
   cursor: pointer;
@@ -94,6 +104,7 @@
 .lightpurple {
   background-color: #9370dbb5;
 }
+
 .lightpurple:hover {
   background-color: #9370db;
   cursor: pointer;
@@ -102,12 +113,13 @@
 .categoryInput {
   accent-color: #425e91;
 }
+
 .categoryInput:hover {
   cursor: pointer;
 }
 
-.categoryText {
-}
+.categoryText {}
+
 .categoryText:hover {
   cursor: pointer;
 }
