@@ -13,8 +13,8 @@ export function BarGraph({ proportions, height }: IBarGraphProps) {
   const maxProportion = proportions ? Math.max(...proportions.map((item) => item.proportion)) : 0;
 
   proportions?.sort((a, b) => {
-    if (a.country == null) return 1;
-    if (b.country == null) return -1;
+    if (a.country == "unknown") return 1;
+    if (b.country == "unknown") return -1;
     return b.proportion - a.proportion;
   });
   return (
@@ -27,7 +27,7 @@ export function BarGraph({ proportions, height }: IBarGraphProps) {
               height: `${(item.proportion / maxProportion) * 150}%`,
             }}
           >
-            {item.country === "kr" && <Flag width={50} className={classes["flag-image"]}/>}
+            {item.country === "kr" && <Flag width={50} className={classes["flag-image"]} />}
           </div>
           <span className={classes.label}>
             {item.country == null ? "미분류" : countryToName[item.country]}

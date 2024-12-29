@@ -1,4 +1,5 @@
 export const countryToName: { [key: string]: string } = {
+  unknown: "미분류",
   gh: "가나",
   ga: "가봉",
   gy: "가이아나",

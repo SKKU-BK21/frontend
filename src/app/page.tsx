@@ -17,6 +17,7 @@ export default function Home() {
   ]);
   const [startYear, setStartYear] = useState(2014);
   const [endYear, setEndYear] = useState(2024);
+  const [country, setCountry] = useState("kr");
 
   return (
     <main className={classes.root}>
@@ -31,6 +32,8 @@ export default function Home() {
         setStartYear={setStartYear}
         endYear={endYear}
         setEndYear={setEndYear}
+        country={country}
+        setCountry={setCountry}
       />
       <CardList
         isExcellentChecked={isExcellentChecked}
@@ -43,6 +46,8 @@ export default function Home() {
         setStartYear={setStartYear}
         endYear={endYear}
         setEndYear={setEndYear}
+        country={country}
+        setCountry={setCountry}
       />
     </main>
   );
