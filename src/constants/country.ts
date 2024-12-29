@@ -1,4 +1,5 @@
 export const countryToName: { [key: string]: string } = {
+  unknown: "미분류",
   gh: "가나",
   ga: "가봉",
   gy: "가이아나",
@@ -70,7 +71,7 @@ export const countryToName: { [key: string]: string } = {
   mt: "몰타",
   mn: "몽골",
   mm: "미얀마",
-  us: "미합중국",
+  us: "미국",
   vu: "바누아투",
   bh: "바레인",
   bb: "바베이도스",

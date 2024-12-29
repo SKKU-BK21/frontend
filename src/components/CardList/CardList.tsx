@@ -15,7 +15,11 @@ type Conference = {
   id: number;
   acronym: string;
   ratings: Rating[];
-  proportion: number;
+  filterPublicationCount: number;
+  filterPublicationProportion: number;
+  koreaPublicationCount: number;
+  koreaPublicationProportion: number;
+  totalPublicationCount: number;
   average: number;
 };
 
@@ -38,6 +42,8 @@ interface CardListProps {
   setCategoryChecked?: (value: string[]) => void;
   setStartYear?: (value: number) => void;
   setEndYear?: (value: number) => void;
+  country: string;
+  setCountry?: (value: string) => void;
 }
 
 export function CardList({
@@ -51,6 +57,8 @@ export function CardList({
   setCategoryChecked,
   setStartYear,
   setEndYear,
+  country,
+  setCountry,
 }: CardListProps) {
   const [data, setData] = useState<Conference[]>([]);
   const [pageData, setPageData] = useState<Page>();
@@ -69,7 +77,7 @@ export function CardList({
         baseUrl +
           `/conferences?sort=${sortBy}&fromyear=${startYear}&toyear=${endYear}&pageSize=${PAGE_SIZE}&pageNumber=${page}&grade=${
             isExcellentChecked ? "FIRST" : isGoodChecked ? "SECOND" : ""
-          }&${categoryParams}`
+          }&${categoryParams}&country=${country}`
       );
       const jsonResponse = (await response.json()) as Page;
       setData(jsonResponse.data);
@@ -78,7 +86,16 @@ export function CardList({
     };
 
     fetchData();
-  }, [categoryChecked, endYear, isExcellentChecked, isGoodChecked, page, sortBy, startYear]);
+  }, [
+    categoryChecked,
+    country,
+    endYear,
+    isExcellentChecked,
+    isGoodChecked,
+    page,
+    sortBy,
+    startYear,
+  ]);
 
   const handlePreviousPage = () => {
     setPage((prevPage) => Math.max(prevPage - 1, 1));
@@ -119,6 +136,7 @@ export function CardList({
                     setConferenceId(conference.id);
                     setOpen(true);
                   }}
+                  country={country}
                 />
               </div>
             );

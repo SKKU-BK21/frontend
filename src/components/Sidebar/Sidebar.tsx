@@ -1,5 +1,6 @@
 "use client";
 
+import { OtherFlag } from "../OtherFlag/OtherFlag";
 import RangeSlider from "../RangeSlider/RangeSlider";
 import classes from "./Sidebar.module.css";
 
@@ -29,6 +30,8 @@ export function Sidebar({
   setStartYear,
   endYear,
   setEndYear,
+  country,
+  setCountry,
 }: any) {
   return (
     <div className={classes.root}>
@@ -119,6 +122,49 @@ export function Sidebar({
           setEndYear={setEndYear}
         />
       </div>
+      <div className={classes.filterContainer} style={{ paddingBottom: "50px" }}>
+        <div className={classes.categoryTitle}>
+          <h3>국가</h3>
+        </div>
+        {Object.keys(countryData).map((countryKey) => {
+          return (
+            <div
+              key={countryKey}
+              className={`${classes.checkboxItem} `}
+              onClick={() => {
+                setCountry(countryKey);
+              }}
+            >
+              <OtherFlag country={countryKey} width={14} height={10} />
+              <input
+                className={classes.categoryInput}
+                onChange={(e) => {
+                  setCountry(e.target.value);
+                }}
+                type="radio"
+                id={countryKey}
+                value={countryKey}
+                checked={countryKey === country}
+              />
+              <label className={classes.categoryText}>{countryData[countryKey]}</label>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }
+
+const countryData: { [key: string]: string } = {
+  kr: "한국",
+  us: "미국",
+  cn: "중국",
+  ca: "캐나다",
+  ch: "스위스",
+  de: "독일",
+  il: "이스라엘",
+  hk: "홍콩",
+  ne: "네덜란드",
+  sg: "싱가포르",
+  uk: "영국",
+};
