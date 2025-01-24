@@ -75,8 +75,9 @@ export function CardList({
         .join("&");
       const response = await fetch(
         baseUrl +
-        `/conferences?sort=${sortBy}&fromyear=${startYear}&toyear=${endYear}&pageSize=${PAGE_SIZE}&pageNumber=${page}&grade=${isExcellentChecked ? "FIRST" : isGoodChecked ? "SECOND" : ""
-        }&${categoryParams}&country=${country}`
+          `/conferences?sort=${sortBy}&fromyear=${startYear}&toyear=${endYear}&pageSize=${PAGE_SIZE}&pageNumber=${page}&grade=${
+            isExcellentChecked ? "FIRST" : isGoodChecked ? "SECOND" : ""
+          }&${categoryParams}&country=${country}`
       );
       const jsonResponse = (await response.json()) as Page;
       setData(jsonResponse.data);
@@ -118,11 +119,11 @@ export function CardList({
         categoryChecked={categoryChecked}
         startYear={startYear}
         endYear={endYear}
-        setIsExcellentChecked={setIsExcellentChecked ? setIsExcellentChecked : () => { }}
-        setIsGoodChecked={setIsGoodChecked ? setIsGoodChecked : () => { }}
-        setCategoryChecked={setCategoryChecked ? setCategoryChecked : () => { }}
-        setStartYear={setStartYear ? setStartYear : () => { }}
-        setEndYear={setEndYear ? setEndYear : () => { }}
+        setIsExcellentChecked={setIsExcellentChecked ? setIsExcellentChecked : () => {}}
+        setIsGoodChecked={setIsGoodChecked ? setIsGoodChecked : () => {}}
+        setCategoryChecked={setCategoryChecked ? setCategoryChecked : () => {}}
+        setStartYear={setStartYear ? setStartYear : () => {}}
+        setEndYear={setEndYear ? setEndYear : () => {}}
       />
       <div className={classes.row}>
         {data && data.length > 0 ? (
@@ -161,13 +162,15 @@ export function CardList({
           Array.from({ length: pageData.totalPages }, (_, index) => (
             <div
               key={index}
-              className={`${classes["pagination-item"]} ${page === index + 1 ? classes["active"] : ""
-                }`}
+              className={`${classes["pagination-item"]} ${
+                page === index + 1 ? classes["active"] : ""
+              }`}
               onClick={() => handlePageClick(index + 1)}
             >
-              {index + 1} / {pageData.totalPages}
+              {index + 1}
             </div>
           ))}
+        / {pageData ? pageData.totalPages : 0}
         <svg
           onClick={handleNextPage}
           className={classes["pagination-icon"]}

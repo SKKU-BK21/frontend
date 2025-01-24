@@ -4,6 +4,7 @@
   background-color: #f9f9ff;
   margin: 16px;
   padding: 15px;
+  width: 255px;
 }
 
 .ratio {
@@ -51,12 +52,12 @@
 }
 
 .compare {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 500;
 }
 
 .compareValue {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 700;
   margin-left: 4px;
 }
