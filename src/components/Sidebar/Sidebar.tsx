@@ -164,7 +164,7 @@ const countryData: { [key: string]: string } = {
   de: "독일",
   il: "이스라엘",
   hk: "홍콩",
-  ne: "네덜란드",
+  // ne: "네덜란드",
   sg: "싱가포르",
   uk: "영국",
 };

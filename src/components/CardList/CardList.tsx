@@ -14,6 +14,7 @@ type Rating = {
 type Conference = {
   id: number;
   acronym: string;
+  category: string;
   ratings: Rating[];
   filterPublicationCount: number;
   filterPublicationProportion: number;

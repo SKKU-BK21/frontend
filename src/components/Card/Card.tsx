@@ -1,5 +1,6 @@
 "use client";
 
+import { CategoryBadge } from "../CategoryBadge";
 import { Flag } from "../Flag/Flag";
 import { OtherFlag } from "../OtherFlag/OtherFlag";
 import { RatingBadge } from "../RatingBadge";
@@ -14,6 +15,7 @@ type Rating = {
 type Conference = {
   id: number;
   acronym: string;
+  category: string;
   ratings: Rating[];
   filterPublicationCount: number;
   filterPublicationProportion: number;
@@ -37,6 +39,9 @@ export function Card({ item, onClick, country }: CardProps) {
         {item.ratings.map((rating, index) => (
           <RatingBadge key={index} year={rating.year} rating={rating.grade} />
         ))}
+      </div>
+      <div className={classes.pbs}>
+        <CategoryBadge category={item.category} color="black"/>
       </div>
       <div className={classes.ratio}>
         {country === "kr" ? (

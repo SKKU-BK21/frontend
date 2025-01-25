@@ -8,6 +8,7 @@ import { BarGraph } from "./elements";
 import { RatingBadge } from "../RatingBadge";
 import { DataTable } from "./elements";
 import { baseUrl } from "@/constants/baseUrl";
+import { CategoryBadge } from "../CategoryBadge";
 
 export interface IDataModalProps {
   conferenceId: number;
@@ -210,6 +211,7 @@ export function DataModal({
               {data.ratings.map((item, index) => (
                 <RatingBadge key={index} year={item.year} rating={item.grade} />
               ))}
+              <CategoryBadge category={data.category} color="black"/>
             </div>
             <div className={classes.pl}>
               <div className={classes.subTitle}>{"한국 랭킹"}</div>
