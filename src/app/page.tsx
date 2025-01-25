@@ -16,7 +16,7 @@ export default function Home() {
     "COMTH",
   ]);
   const [startYear, setStartYear] = useState(2014);
-  const [endYear, setEndYear] = useState(2024);
+  const [endYear, setEndYear] = useState(new Date().getFullYear());
   const [country, setCountry] = useState("kr");
 
   return (
