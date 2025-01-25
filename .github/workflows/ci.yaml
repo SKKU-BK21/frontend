@@ -19,6 +19,8 @@ jobs:
           port: 22
           script: | # 실행할 스크립트
             cd /home/ubuntu/frontend
+            export NVM_DIR=~/.nvm
+            source ~/.nvm/nvm.sh
             git pull origin develop
             npm i --force
             npm run build
