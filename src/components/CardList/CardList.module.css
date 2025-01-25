@@ -3,6 +3,12 @@
   width: calc(100% - 300px);
 }
 
+@media screen and (max-width: 480px) {
+  .root {
+    width: 100%;
+  }
+}
+
 .row {
   display: flex;
   flex-wrap: wrap;
@@ -13,6 +19,15 @@
 
 .column {
   flex: 25%;
+}
+
+@media screen and (max-width: 480px) {
+  .column {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1; 
+  }
 }
 
 .topFilter span {

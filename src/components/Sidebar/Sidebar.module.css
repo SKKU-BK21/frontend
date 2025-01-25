@@ -4,6 +4,12 @@
   border-right: 1px solid #e9ecef;
 }
 
+@media screen and (max-width: 480px) {
+  .root {
+    display: none;
+  }
+}
+
 .filterContainer {
   margin-bottom: 30px;
   background-color: #ffffff;
