@@ -10,7 +10,7 @@ interface RangeSliderProps {
 
 function RangeSlider({ startYear, endYear, setStartYear, setEndYear }: RangeSliderProps) {
   const fixedMinYear = 2014;
-  const fixedMaxYear = 2024;
+  const fixedMaxYear = new Date().getFullYear();
   const YearGap = 0;
 
   const [rangeMinValue, setRangeMinValue] = useState(fixedMinYear);
@@ -61,7 +61,10 @@ function RangeSlider({ startYear, endYear, setStartYear, setEndYear }: RangeSlid
           step={1}
           value={startYear}
           onChange={(e) => {
-            setStartYear(parseInt(e.target.value));
+            const newStartYear = parseInt(e.target.value);
+            if (newStartYear <= endYear) {
+              setStartYear(newStartYear);
+            }
             yearRangeMinValueHandler(e);
             twoRangeHandler();
           }}
@@ -77,7 +80,10 @@ function RangeSlider({ startYear, endYear, setStartYear, setEndYear }: RangeSlid
           step={1}
           value={endYear}
           onChange={(e) => {
-            setEndYear(parseInt(e.target.value));
+            const newEndYear = parseInt(e.target.value);
+            if (newEndYear >= startYear) {
+              setEndYear(newEndYear);
+            }
             yearRangeMaxValueHandler(e);
             twoRangeHandler();
           }}

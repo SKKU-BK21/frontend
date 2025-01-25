@@ -11,6 +11,7 @@ export interface Proportion {
 export interface Conference {
   id: number;
   acronym: string;
+  category: string;
   fullName: string;
   ratings: Rating[];
   proportions: Proportion[];

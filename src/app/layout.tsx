@@ -9,8 +9,8 @@ import { MSWProvider } from "@/mocks/MSWProvider";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "KIISE 학회/논문 통계 서비스",
-  description: "한국정보과학회 학회/논문 통계 서비스",
+  title: "KIISE 우수학술대회 목록 국가별 통계",
+  description: "한국정보과학회 우수학술대회 목록 국가별 통계",
 };
 
 export default function RootLayout({

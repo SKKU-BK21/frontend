@@ -1,7 +1,13 @@
 .root {
-  width: 300px;
+  width: 330px;
   padding: 60px 42px;
   border-right: 1px solid #e9ecef;
+}
+
+@media screen and (max-width: 480px) {
+  .root {
+    display: none;
+  }
 }
 
 .filterContainer {
