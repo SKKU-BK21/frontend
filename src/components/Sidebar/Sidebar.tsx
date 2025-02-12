@@ -3,6 +3,8 @@
 import { OtherFlag } from "../OtherFlag/OtherFlag";
 import RangeSlider from "../RangeSlider/RangeSlider";
 import classes from "./Sidebar.module.css";
+import Link from 'next/link'
+import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 
 export interface CategoryData {
   [key: string]: {
@@ -110,6 +112,17 @@ export function Sidebar({
             </div>
           );
         })}
+      </div>
+      <div className={classes.filterContainer}>
+        <div className={classes.toptierTitle}>
+          <h3>우수 학술대회 목록</h3>
+        </div>
+        <Link target="_blank" href="https://www.kiise.or.kr/TopConferences/data/SW%EB%B6%84%EC%95%BC%EC%9A%B0%EC%88%98%ED%95%99%EC%88%A0%EB%8C%80%ED%9A%8C%EB%AA%A9%EB%A1%9D_2024.pdf">
+          <div className={classes.toptierContainer}>
+            <OpenInNewIcon fontSize='small' />
+            <div>PDF</div>
+          </div>
+        </Link>
       </div>
       <div className={classes.filterContainer} style={{ paddingBottom: "50px" }}>
         <div className={classes.categoryTitle}>
