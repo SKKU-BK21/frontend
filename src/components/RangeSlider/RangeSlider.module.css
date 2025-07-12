@@ -57,3 +57,14 @@
   border-radius: 3px;
   font-size: 12px;
 }
+
+.number {
+  position: static;
+  display: inline-block;
+  text-align: center;
+  background: #fff;
+  padding: 2px 5px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  font-size: 12px;
+}

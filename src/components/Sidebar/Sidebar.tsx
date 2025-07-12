@@ -124,7 +124,7 @@ export function Sidebar({
           </div>
         </Link>
       </div>
-      <div className={classes.filterContainer} style={{ paddingBottom: "50px" }}>
+      <div className={classes.filterContainer}>
         <div className={classes.categoryTitle}>
           <h3>연도</h3>
         </div>
@@ -135,7 +135,7 @@ export function Sidebar({
           setEndYear={setEndYear}
         />
       </div>
-      <div className={classes.filterContainer} style={{ paddingBottom: "50px" }}>
+      <div className={classes.filterContainer}>
         <div className={classes.categoryTitle}>
           <h3>국가</h3>
         </div>

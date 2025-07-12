@@ -46,52 +46,40 @@ function RangeSlider({ startYear, endYear, setStartYear, setEndYear }: RangeSlid
 
   return (
     <>
-      <div className={classes.slide}>
-        <div
-          className={classes.slideInner}
-          style={{ left: `${rangeMinPercent}%`, right: `${rangeMaxPercent}%` }}
-        ></div>
-      </div>
       <div className={classes.wrapper}>
-        <input
-          type="range"
-          className={classes.range}
+        <input 
+          className={classes.number}
+          type="number"
           min={fixedMinYear}
           max={fixedMaxYear - YearGap}
-          step={1}
           value={startYear}
-          onChange={(e) => {
+          step={1}
+          onChange={(e) => {            
             const newStartYear = parseInt(e.target.value);
             if (newStartYear <= endYear) {
               setStartYear(newStartYear);
             }
-            yearRangeMinValueHandler(e);
-            twoRangeHandler();
           }}
-        />
-        <div className={classes.thumbContainer} style={{ left: `${rangeMinPercent}%` }}>
-          <div className={classes.thumbLabel}>{startYear}</div>
-        </div>
-        <input
-          type="range"
-          className={classes.range}
-          min={fixedMinYear + YearGap}
-          max={fixedMaxYear}
-          step={1}
+          >
+        </input>
+        <p style={{position: "static", display: "inline-block", paddingInline: "10px"}}>-</p>
+        <input 
+          className={classes.number}
+          type="number"
+          min={fixedMinYear}
+          max={fixedMaxYear - YearGap}
           value={endYear}
+          step={1}
           onChange={(e) => {
             const newEndYear = parseInt(e.target.value);
             if (newEndYear >= startYear) {
               setEndYear(newEndYear);
             }
-            yearRangeMaxValueHandler(e);
-            twoRangeHandler();
           }}
-        />
-        <div className={classes.thumbContainer} style={{ left: `${100 - rangeMaxPercent}%` }}>
-          <div className={classes.thumbLabel}>{endYear}</div>
-        </div>
+          >
+        </input>
       </div>
+      
     </>
   );
 }
