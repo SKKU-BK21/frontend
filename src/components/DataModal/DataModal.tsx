@@ -24,8 +24,8 @@ export function DataModal({
   open,
   onClose,
   withCloseButton,
-  fromYear = 2014,
-  toYear = 2024,
+  fromYear = 2015,
+  toYear = 2025,
 }: IDataModalProps) {
   const [isClient, setIsClient] = useState(false);
   // dialog element 참조를 위한 ref
@@ -214,11 +214,11 @@ export function DataModal({
               <CategoryBadge category={data.category} color="black"/>
             </div>
             <div className={classes.pl}>
-              <div className={classes.subTitle}>{"한국 랭킹"}</div>
+              <div className={classes.subTitle}>{"World Ranking"}</div>
               <BarGraph proportions={data.proportions} height={200} />
             </div>
             <div className={classes.pl}>
-              <div className={`${classes.subTitle} ${classes.ps}`}>{"한국 논문 목록"}</div>
+              <div className={`${classes.subTitle} ${classes.ps}`}>{"Papers from Korea"}</div>
               <DataTable render={open} id={conferenceId} fromYear={fromYear} toYear={toYear} />
             </div>
           </>

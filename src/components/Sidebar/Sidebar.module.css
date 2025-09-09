@@ -127,6 +127,39 @@
   cursor: pointer;
 }
 
+.firebrick { background-color: #f4a7a7; }
+.firebrick:hover { background-color: #f18f8f; }
+.royalblue { background-color: #7c9ed9; }
+.royalblue:hover { background-color: #6c8ab1; }
+.goldenrod { background-color: #e1c37d; }
+.goldenrod:hover { background-color: #d0b56a; }
+.salmon { background-color: #f7a7a7; }
+.salmon:hover { background-color: #f59090; }
+.chocolate { background-color: #d18f6f; }
+.chocolate:hover { background-color: #c57b55; }
+.cadetblue { background-color: #b0c4d1; }
+.cadetblue:hover { background-color: #a3b3c1; }
+.seagreen { background-color: #a4d8a4; }
+.seagreen:hover { background-color: #8fc78f; }
+.mediumslateblue { background-color: #7a9cdb; }
+.mediumslateblue:hover { background-color: #6c88c3; }
+.darkorchid { background-color: #b58bcb; }
+.darkorchid:hover { background-color: #9a78b7; }
+.orangered { background-color: #fbb38d; }
+.orangered:hover { background-color: #f99a71; }
+.darkturquoise { background-color: #76c7c7; }
+.darkturquoise:hover { background-color: #6bb8b8; }
+.sienna { background-color: #d5a28f; }
+.sienna:hover { background-color: #c28b79; }
+.dimgray { background-color: #a6a6a6; }
+.dimgray:hover { background-color: #929292; }
+.chartreuse { background-color: #b8e16b; }
+.chartreuse:hover { background-color: #a7d95c; }
+.dodgerblue { background-color: #6aa9e3; }
+.dodgerblue:hover { background-color: #5a92d3; }
+.darkgreen { background-color: #76c28f; }
+.darkgreen:hover { background-color: #68b180; }
+
 .categoryInput {
   accent-color: #425e91;
 }

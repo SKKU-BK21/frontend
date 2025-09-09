@@ -3,8 +3,8 @@
 import { OtherFlag } from "../OtherFlag/OtherFlag";
 import RangeSlider from "../RangeSlider/RangeSlider";
 import classes from "./Sidebar.module.css";
-import Link from 'next/link'
-import OpenInNewIcon from '@mui/icons-material/OpenInNew';
+import Link from "next/link";
+import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 
 export interface CategoryData {
   [key: string]: {
@@ -12,13 +12,24 @@ export interface CategoryData {
     color: string;
   };
 }
+
 export const categoryData: CategoryData = {
-  AIML: { text: "🧠 AI / ML", color: "lightpurple" },
-  ARCH: { text: "🖥️ 컴퓨터 구조", color: "lightblue" },
-  INFOSEC: { text: "🔒 정보보안", color: "lightgreen" },
-  NET: { text: "🌐 네트워크", color: "orange" },
-  SYSDB: { text: "🏠 시스템 / 데이터베이스", color: "brown" },
-  COMTH: { text: "🎓 컴퓨팅 이론", color: "lightred" },
+  Alg: { text: "Algorithm", color: "firebrick" },
+  Arch: { text: "Architecture", color: "royalblue" },
+  Bio: { text: "Bio", color: "goldenrod" },
+  CGI: { text: "Graphics/Interface", color: "salmon" },
+  CV: { text: "Vision", color: "chocolate" },
+  DB: { text: "Database", color: "cadetblue" },
+  DM: { text: "Data Mining", color: "seagreen" },
+  HPC: { text: "HPC", color: "mediumslateblue" },
+  ML: { text: "Machine Learning", color: "darkorchid" },
+  NLP: { text: "NLP", color: "orangered" },
+  Net: { text: "Network", color: "darkturquoise" },
+  OS: { text: "Operating System", color: "sienna" },
+  PL: { text: "Programming Language", color: "dimgray" },
+  Robot: { text: "Robot", color: "chartreuse" },
+  SE: { text: "SW Engineering", color: "dodgerblue" },
+  Sec: { text: "Security", color: "darkgreen" },
 };
 
 export function Sidebar({
@@ -39,7 +50,7 @@ export function Sidebar({
     <div className={classes.root}>
       <div className={classes.filterContainer}>
         <div className={classes.categoryTitle}>
-          <h3>학회 등급</h3>
+          <h3>Rank Types</h3>
         </div>
         <div
           className={`${classes.checkboxItem} ${classes.red}`}
@@ -56,7 +67,7 @@ export function Sidebar({
             className={classes.ratingLabel}
             onClick={() => setIsExcellentChecked(!isExcellentChecked)}
           >
-            🥇 최우수
+            🥇 Top Rank
           </label>
         </div>
         <div
@@ -71,13 +82,13 @@ export function Sidebar({
             checked={isGoodChecked}
           />
           <label className={classes.ratingLabel} onClick={() => setIsGoodChecked(!isGoodChecked)}>
-            🥈 우수
+            🥈 High Rank
           </label>
         </div>
       </div>
       <div className={classes.filterContainer}>
         <div className={classes.categoryTitle}>
-          <h3>카테고리</h3>
+          <h3>Category</h3>
         </div>
         {Object.keys(categoryData).map((category) => {
           return (
@@ -115,18 +126,21 @@ export function Sidebar({
       </div>
       <div className={classes.filterContainer}>
         <div className={classes.toptierTitle}>
-          <h3>우수 학술대회 목록</h3>
+          <h3>KIISE CS Conference List</h3>
         </div>
-        <Link target="_blank" href="https://www.kiise.or.kr/TopConferences/data/SW%EB%B6%84%EC%95%BC%EC%9A%B0%EC%88%98%ED%95%99%EC%88%A0%EB%8C%80%ED%9A%8C%EB%AA%A9%EB%A1%9D_2024.pdf">
+        <Link
+          target="_blank"
+          href="https://www.kiise.or.kr/TopConferences/data/SW%EB%B6%84%EC%95%BC%EC%9A%B0%EC%88%98%ED%95%99%EC%88%A0%EB%8C%80%ED%9A%8C%EB%AA%A9%EB%A1%9D_2024.pdf"
+        >
           <div className={classes.toptierContainer}>
-            <OpenInNewIcon fontSize='small' />
-            <div>PDF</div>
+            <OpenInNewIcon fontSize="small" />
+            <div>2024 List</div>
           </div>
         </Link>
       </div>
       <div className={classes.filterContainer}>
         <div className={classes.categoryTitle}>
-          <h3>연도</h3>
+          <h3>Year Range</h3>
         </div>
         <RangeSlider
           startYear={startYear}
@@ -137,7 +151,7 @@ export function Sidebar({
       </div>
       <div className={classes.filterContainer}>
         <div className={classes.categoryTitle}>
-          <h3>국가</h3>
+          <h3>Country</h3>
         </div>
         {Object.keys(countryData).map((countryKey) => {
           return (
@@ -169,15 +183,15 @@ export function Sidebar({
 }
 
 const countryData: { [key: string]: string } = {
-  kr: "한국",
-  us: "미국",
-  cn: "중국",
-  ca: "캐나다",
-  ch: "스위스",
-  de: "독일",
-  il: "이스라엘",
-  hk: "홍콩",
+  kr: "Korea",
+  us: "USA",
+  cn: "China",
+  ca: "Canada",
+  ch: "Swiss",
+  de: "Germany",
+  il: "Israel",
+  hk: "Hongkong",
   // ne: "네덜란드",
-  sg: "싱가포르",
-  uk: "영국",
+  sg: "Singapore",
+  uk: "UK",
 };

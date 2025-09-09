@@ -20,7 +20,6 @@ export function Footer() {
           ))}
         </div>
       </div>
-      <div className={classes.copy}>Copyright &copy; 2024 KIISE All rights reserved. </div>
     </footer>
   );
 }

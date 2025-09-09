@@ -51,8 +51,8 @@ export function CardList({
   isExcellentChecked,
   isGoodChecked,
   categoryChecked,
-  startYear = 2014,
-  endYear = 2024,
+  startYear = 2015,
+  endYear = 2025,
   setIsExcellentChecked,
   setIsGoodChecked,
   setCategoryChecked,
@@ -71,19 +71,37 @@ export function CardList({
 
   useEffect(() => {
     const fetchData = async () => {
-      const categoryParams = categoryChecked
+      const categoryParams = (
+        categoryChecked.length == 1 ? [...categoryChecked, ...categoryChecked] : categoryChecked
+      )
         .map((category) => `category=${encodeURIComponent(category)}`)
         .join("&");
+
       const response = await fetch(
         baseUrl +
           `/conferences?sort=${sortBy}&fromyear=${startYear}&toyear=${endYear}&pageSize=${PAGE_SIZE}&pageNumber=${page}&grade=${
             isExcellentChecked ? "FIRST" : isGoodChecked ? "SECOND" : ""
           }&${categoryParams}&country=${country}`
       );
+      console.log(
+        baseUrl +
+          `/conferences?sort=${sortBy}&fromyear=${startYear}&toyear=${endYear}&pageSize=${PAGE_SIZE}&pageNumber=${page}&grade=${
+            isExcellentChecked ? "FIRST" : isGoodChecked ? "SECOND" : ""
+          }&${categoryParams}&country=${country}`
+      );
+      // const response2 = await fetch(
+      //   baseUrl +
+      //     `/conferences?sort=${sortBy}&fromyear=${startYear}&toyear=${endYear}&pageSize=${PAGE_SIZE}&pageNumber=${page}&grade=${
+      //       isGoodChecked ? "SECOND" : ""
+      //     }&${categoryParams}&country=${country}`
+      // );
+      // console.log(response, response2);
+      // const jsonResponse = (await { ...response, ...response2 }.json()) as Page;
       const jsonResponse = (await response.json()) as Page;
+      // const jsonResponse2 = (await response2.json()) as Page;
       setData(jsonResponse.data);
       setPageData(jsonResponse);
-      console.log(jsonResponse.data);
+      // console.log(jsonResponse);
     };
 
     fetchData();
@@ -143,7 +161,7 @@ export function CardList({
             );
           })
         ) : (
-          <div className={classes.noDataMessage}>조회된 컨퍼런스가 없습니다.</div>
+          <div className={classes.noDataMessage}>No Conferences Found. </div>
         )}
         <DataModal open={open} onClose={close} conferenceId={conferenceId} withCloseButton />
       </div>

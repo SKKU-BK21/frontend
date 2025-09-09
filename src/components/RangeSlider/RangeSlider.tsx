@@ -9,7 +9,7 @@ interface RangeSliderProps {
 }
 
 function RangeSlider({ startYear, endYear, setStartYear, setEndYear }: RangeSliderProps) {
-  const fixedMinYear = 2014;
+  const fixedMinYear = new Date().getFullYear() - 10;
   const fixedMaxYear = new Date().getFullYear();
   const YearGap = 0;
 
@@ -46,7 +46,87 @@ function RangeSlider({ startYear, endYear, setStartYear, setEndYear }: RangeSlid
 
   return (
     <>
+      <div className={classes.slide}>
+        <div
+          className={classes.slideInner}
+          style={{ left: `${rangeMinPercent}%`, right: `${rangeMaxPercent}%` }}
+        ></div>
+      </div>
       <div className={classes.wrapper}>
+        <input
+          type="range"
+          className={classes.range}
+          min={fixedMinYear}
+          max={fixedMaxYear - YearGap}
+          step={1}
+          value={startYear}
+          onChange={(e) => {
+            const newStartYear = parseInt(e.target.value);
+            if (newStartYear <= endYear && newStartYear >= fixedMinYear) {
+              setStartYear(newStartYear);
+            }
+            yearRangeMinValueHandler(e);
+            twoRangeHandler();
+          }}
+        />
+        <div className={classes.thumbContainer} style={{ left: `${rangeMinPercent}%` }}>
+          <div className={classes.thumbLabel}>
+            <input
+              className={classes.number}
+              type="number"
+              min={fixedMinYear}
+              max={fixedMaxYear - YearGap}
+              value={startYear}
+              step={1}
+              onChange={(e) => {
+                const newStartYear = parseInt(e.target.value);
+                if (newStartYear <= endYear && newStartYear >= fixedMinYear) {
+                  setStartYear(newStartYear);
+                }
+                yearRangeMaxValueHandler(e);
+                twoRangeHandler();
+              }}
+            ></input>
+          </div>
+        </div>
+        <input
+          type="range"
+          className={classes.range}
+          min={fixedMinYear + YearGap}
+          max={fixedMaxYear}
+          step={1}
+          value={endYear}
+          onChange={(e) => {
+            const newEndYear = parseInt(e.target.value);
+            if (newEndYear >= startYear && newEndYear <= fixedMaxYear) {
+              setEndYear(newEndYear);
+            }
+            yearRangeMaxValueHandler(e);
+            twoRangeHandler();
+          }}
+        />
+        <div className={classes.thumbContainer} style={{ left: `${100 - rangeMaxPercent}%` }}>
+          <div className={classes.thumbLabel}>
+            <input
+              className={classes.number}
+              type="number"
+              min={fixedMinYear}
+              max={fixedMaxYear - YearGap}
+              value={endYear}
+              step={1}
+              onChange={(e) => {
+                const newEndYear = parseInt(e.target.value);
+                if (newEndYear >= startYear && newEndYear <= fixedMaxYear) {
+                  setEndYear(newEndYear);
+                }
+                yearRangeMaxValueHandler(e);
+                twoRangeHandler();
+              }}
+            ></input>
+          </div>
+        </div>
+      </div>
+      {/* <div className={classes.wrapper}>
         <input 
           className={classes.number}
           type="number"
@@ -78,8 +158,7 @@ function RangeSlider({ startYear, endYear, setStartYear, setEndYear }: RangeSlid
           }}
           >
         </input>
-      </div>
-      
+      </div> */}
     </>
   );
 }
