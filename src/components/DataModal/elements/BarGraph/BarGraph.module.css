@@ -4,9 +4,8 @@
   justify-content: space-around;
   height: 200px; /* 차트의 전체 높이 */
   width: 100%; /* 차트의 너비 */
-  overflow: hidden;
+  overflow-y: hidden;
   overflow-x: auto;
-  scrollbar-width: none;
   margin-top: 20px;
 }
 
@@ -41,5 +40,6 @@
 }
 
 .flag-image {
-  transform: translateY(-110%); /* 가운데 정렬 */
+  position: relative; /* 가운데 정렬 */
+  bottom: 40px;
 }

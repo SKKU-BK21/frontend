@@ -52,7 +52,7 @@ export function Card({ item, onClick, country }: CardProps) {
         <div className={classes.proportion}>{`${item.filterPublicationProportion}%`}</div>
       </div>
       <div className={classes.compare}>
-        전체 대비 논문 수
+        Number of Papers/Total
         <span className={classes.compareValue}>
           {item.filterPublicationCount}/{item.totalPublicationCount}
         </span>

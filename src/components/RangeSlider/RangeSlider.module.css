@@ -46,14 +46,27 @@
 
 .thumbContainer {
   position: absolute;
-  bottom: -35px;
+  bottom: -25px;
   transform: translateX(-50%);
 }
 
 .thumbLabel {
   background: #fff;
-  padding: 2px 5px;
+  padding: 2px 0px;
   border: 1px solid #ccc;
+  border-radius: 3px;
+  font-size: 12px;
+}
+
+.number {
+  width: 45px;
+  position: static;
+  display: inline-block;
+  text-align: center;
+  background: #fff;
+  padding: 0px 0px;
+  /* border: 1px solid #ccc; */
+  border: none;
   border-radius: 3px;
   font-size: 12px;
 }
