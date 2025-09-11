@@ -163,7 +163,13 @@ export function CardList({
         ) : (
           <div className={classes.noDataMessage}>No Conferences Found. </div>
         )}
-        <DataModal open={open} onClose={close} conferenceId={conferenceId} withCloseButton />
+        <DataModal
+          open={open}
+          onClose={close}
+          conferenceId={conferenceId}
+          withCloseButton
+          country={country}
+        />
       </div>
       <div className={classes.pagination}>
         <svg

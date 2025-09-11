@@ -17,6 +17,7 @@ export interface IDataModalProps {
   withCloseButton?: boolean;
   fromYear?: number;
   toYear?: number;
+  country?: string;
 }
 
 export function DataModal({
@@ -26,13 +27,17 @@ export function DataModal({
   withCloseButton,
   fromYear = 2015,
   toYear = 2025,
+  country,
 }: IDataModalProps) {
   const [isClient, setIsClient] = useState(false);
   // dialog element 참조를 위한 ref
   const dialogRef = useRef<HTMLDialogElement | null>(null);
 
   // 모달의 크기
-  const [dimensions, setDimensions] = useState({ width: 600, height: 800 });
+  const [dimensions, setDimensions] = useState({
+    width: 600,
+    height: country === "kr" ? 800 : 500,
+  });
 
   // 모달의 위치 및 초기 위치 계산
   const [windowWidth, setWindowWidth] = useState(0);
@@ -77,6 +82,7 @@ export function DataModal({
 
   useEffect(() => {
     if (open) {
+      setDimensions({ width: 600, height: country === "kr" ? 800 : 500 });
       dialogRef.current?.showModal();
       const handleClickOutside = (event: MouseEvent) => {
         if (dialogRef.current) {
@@ -168,7 +174,7 @@ export function DataModal({
   const handleCloseModal = () => {
     dialogRef.current?.close();
   };
-  
+
   if (!isClient) {
     return null;
   }
@@ -211,16 +217,18 @@ export function DataModal({
               {data.ratings.map((item, index) => (
                 <RatingBadge key={index} year={item.year} rating={item.grade} />
               ))}
-              <CategoryBadge category={data.category} color="black"/>
+              <CategoryBadge category={data.category} color="black" />
             </div>
             <div className={classes.pl}>
               <div className={classes.subTitle}>{"World Ranking"}</div>
-              <BarGraph proportions={data.proportions} height={200} />
+              <BarGraph proportions={data.proportions} height={200} country={country} />
             </div>
-            <div className={classes.pl}>
-              <div className={`${classes.subTitle} ${classes.ps}`}>{"Papers from Korea"}</div>
-              <DataTable render={open} id={conferenceId} fromYear={fromYear} toYear={toYear} />
-            </div>
+            {country === "kr" && (
+              <div className={classes.pl}>
+                <div className={`${classes.subTitle} ${classes.ps}`}>{"Papers from Korea"}</div>
+                <DataTable render={open} id={conferenceId} fromYear={fromYear} toYear={toYear} />
+              </div>
+            )}
           </>
         )}
       </div>
