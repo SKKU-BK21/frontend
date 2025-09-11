@@ -6,7 +6,7 @@ import { useState } from "react";
 
 export default function Home() {
   const [isExcellentChecked, setIsExcellentChecked] = useState(true);
-  const [isGoodChecked, setIsGoodChecked] = useState(true);
+  const [isGoodChecked, setIsGoodChecked] = useState(false);
   const [categoryChecked, setCategoryChecked] = useState<string[]>([
     "Alg",
     "Arch",

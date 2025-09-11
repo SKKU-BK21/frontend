@@ -54,34 +54,42 @@ export function Sidebar({
         </div>
         <div
           className={`${classes.checkboxItem} ${classes.red}`}
-          onClick={() => setIsExcellentChecked(!isExcellentChecked)}
+          onClick={() => {
+            setIsExcellentChecked(true);
+            setIsGoodChecked(false);
+          }}
         >
           <input
             className={classes.ratingInput}
-            onChange={(e) => setIsExcellentChecked(e.target.checked)}
-            type="checkbox"
+            type="radio"
             id="excellent"
             checked={isExcellentChecked}
           />
           <label
             className={classes.ratingLabel}
-            onClick={() => setIsExcellentChecked(!isExcellentChecked)}
+            onClick={() => {
+              setIsExcellentChecked(true);
+              setIsGoodChecked(false);
+            }}
           >
             🥇 Top Rank
           </label>
         </div>
         <div
           className={`${classes.checkboxItem} ${classes.blue}`}
-          onClick={() => setIsGoodChecked(!isGoodChecked)}
+          onClick={() => {
+            setIsExcellentChecked(false);
+            setIsGoodChecked(true);
+          }}
         >
-          <input
-            className={classes.ratingInput}
-            onChange={(e) => setIsGoodChecked(e.target.checked)}
-            type="checkbox"
-            id="good"
-            checked={isGoodChecked}
-          />
-          <label className={classes.ratingLabel} onClick={() => setIsGoodChecked(!isGoodChecked)}>
+          <input className={classes.ratingInput} type="radio" id="good" checked={isGoodChecked} />
+          <label
+            className={classes.ratingLabel}
+            onClick={() => {
+              setIsExcellentChecked(false);
+              setIsGoodChecked(true);
+            }}
+          >
             🥈 High Rank
           </label>
         </div>
