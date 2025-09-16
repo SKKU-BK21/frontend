@@ -1,6 +1,6 @@
 export interface Rating {
   year: number;
-  rating: "FIRST" | "SECOND";
+  grade: "FIRST" | "SECOND";
 }
 
 export interface Proportion {
@@ -11,6 +11,7 @@ export interface Proportion {
 export interface Conference {
   id: number;
   acronym: string;
+  category: string;
   fullName: string;
   ratings: Rating[];
   proportions: Proportion[];

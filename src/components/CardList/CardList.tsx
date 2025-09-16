@@ -4,6 +4,7 @@ import { Card } from "../Card";
 import { useDisclosure } from "@/hook/useDisclosure";
 import { DataModal } from "../DataModal";
 import { baseUrl } from "@/constants/baseUrl";
+import TopFilter from "../TopFilter/TopFilter";
 
 type Rating = {
   year: number;
@@ -13,8 +14,13 @@ type Rating = {
 type Conference = {
   id: number;
   acronym: string;
+  category: string;
   ratings: Rating[];
-  proportion: number;
+  filterPublicationCount: number;
+  filterPublicationProportion: number;
+  koreaPublicationCount: number;
+  koreaPublicationProportion: number;
+  totalPublicationCount: number;
   average: number;
 };
 
@@ -32,39 +38,83 @@ interface CardListProps {
   categoryChecked: string[];
   startYear?: number;
   endYear?: number;
+  setIsExcellentChecked?: (value: boolean) => void;
+  setIsGoodChecked?: (value: boolean) => void;
+  setCategoryChecked?: (value: string[]) => void;
+  setStartYear?: (value: number) => void;
+  setEndYear?: (value: number) => void;
+  country: string;
+  setCountry?: (value: string) => void;
 }
 
 export function CardList({
   isExcellentChecked,
   isGoodChecked,
   categoryChecked,
-  startYear = 2014,
-  endYear = 2024,
+  startYear = 2015,
+  endYear = 2025,
+  setIsExcellentChecked,
+  setIsGoodChecked,
+  setCategoryChecked,
+  setStartYear,
+  setEndYear,
+  country,
+  setCountry,
 }: CardListProps) {
   const [data, setData] = useState<Conference[]>([]);
+  const [pageData, setPageData] = useState<Page>();
   const [conferenceId, setConferenceId] = useState(0);
-  const [sortBy, setSortBy] = useState("alphabet");
+  const [sortBy, setSortBy] = useState("percentage");
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
   const { open, setOpen, close } = useDisclosure();
 
   useEffect(() => {
     const fetchData = async () => {
-      const categoryParams = categoryChecked
+      const categoryParams = (
+        categoryChecked.length == 1 ? [...categoryChecked, ...categoryChecked] : categoryChecked
+      )
         .map((category) => `category=${encodeURIComponent(category)}`)
         .join("&");
+
       const response = await fetch(
         baseUrl +
           `/conferences?sort=${sortBy}&fromyear=${startYear}&toyear=${endYear}&pageSize=${PAGE_SIZE}&pageNumber=${page}&grade=${
             isExcellentChecked ? "FIRST" : isGoodChecked ? "SECOND" : ""
-          }&${categoryParams}`
+          }&${categoryParams}&country=${country}`
       );
+      console.log(
+        baseUrl +
+          `/conferences?sort=${sortBy}&fromyear=${startYear}&toyear=${endYear}&pageSize=${PAGE_SIZE}&pageNumber=${page}&grade=${
+            isExcellentChecked ? "FIRST" : isGoodChecked ? "SECOND" : ""
+          }&${categoryParams}&country=${country}`
+      );
+      // const response2 = await fetch(
+      //   baseUrl +
+      //     `/conferences?sort=${sortBy}&fromyear=${startYear}&toyear=${endYear}&pageSize=${PAGE_SIZE}&pageNumber=${page}&grade=${
+      //       isGoodChecked ? "SECOND" : ""
+      //     }&${categoryParams}&country=${country}`
+      // );
+      // console.log(response, response2);
+      // const jsonResponse = (await { ...response, ...response2 }.json()) as Page;
       const jsonResponse = (await response.json()) as Page;
+      // const jsonResponse2 = (await response2.json()) as Page;
       setData(jsonResponse.data);
+      setPageData(jsonResponse);
+      // console.log(jsonResponse);
     };
 
     fetchData();
-  }, [categoryChecked, endYear, isExcellentChecked, isGoodChecked, page, sortBy, startYear]);
+  }, [
+    categoryChecked,
+    country,
+    endYear,
+    isExcellentChecked,
+    isGoodChecked,
+    page,
+    sortBy,
+    startYear,
+  ]);
 
   const handlePreviousPage = () => {
     setPage((prevPage) => Math.max(prevPage - 1, 1));
@@ -74,28 +124,28 @@ export function CardList({
     setPage((prevPage) => prevPage + 1);
   };
 
+  const handlePageClick = (pageNumber: number) => {
+    setPage(pageNumber);
+  };
+
   return (
     <div className={classes.root}>
-      <div className={classes.topFilter}>
-        <span
-          onClick={() => {
-            setSortBy("alphabet");
-          }}
-        >
-          {" "}
-          알파벳 순 |{" "}
-        </span>
-        <span
-          onClick={() => {
-            setSortBy("percentage");
-          }}
-        >
-          {" "}
-          논문비율 순{" "}
-        </span>
-      </div>
+      <TopFilter
+        sortBy={sortBy}
+        setSortBy={setSortBy}
+        isExcellentChecked={isExcellentChecked}
+        isGoodChecked={isGoodChecked}
+        categoryChecked={categoryChecked}
+        startYear={startYear}
+        endYear={endYear}
+        setIsExcellentChecked={setIsExcellentChecked ? setIsExcellentChecked : () => {}}
+        setIsGoodChecked={setIsGoodChecked ? setIsGoodChecked : () => {}}
+        setCategoryChecked={setCategoryChecked ? setCategoryChecked : () => {}}
+        setStartYear={setStartYear ? setStartYear : () => {}}
+        setEndYear={setEndYear ? setEndYear : () => {}}
+      />
       <div className={classes.row}>
-        {data.length > 0 &&
+        {data && data.length > 0 ? (
           data.map((conference, index) => {
             return (
               <div key={index} className={classes.column}>
@@ -105,11 +155,21 @@ export function CardList({
                     setConferenceId(conference.id);
                     setOpen(true);
                   }}
+                  country={country}
                 />
               </div>
             );
-          })}
-        <DataModal open={open} onClose={close} conferenceId={conferenceId} withCloseButton />
+          })
+        ) : (
+          <div className={classes.noDataMessage}>No Conferences Found. </div>
+        )}
+        <DataModal
+          open={open}
+          onClose={close}
+          conferenceId={conferenceId}
+          withCloseButton
+          country={country}
+        />
       </div>
       <div className={classes.pagination}>
         <svg
@@ -123,7 +183,19 @@ export function CardList({
         >
           <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
         </svg>
-        <span>{page}</span>
+        {pageData &&
+          Array.from({ length: pageData.totalPages }, (_, index) => (
+            <div
+              key={index}
+              className={`${classes["pagination-item"]} ${
+                page === index + 1 ? classes["active"] : ""
+              }`}
+              onClick={() => handlePageClick(index + 1)}
+            >
+              {index + 1}
+            </div>
+          ))}
+        / {pageData ? pageData.totalPages : 0}
         <svg
           onClick={handleNextPage}
           className={classes["pagination-icon"]}

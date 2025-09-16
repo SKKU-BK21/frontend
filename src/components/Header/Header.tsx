@@ -8,7 +8,9 @@ export function Header() {
       <Link href={"/"}>
         <Image src={"/kiise.svg"} alt={""} width={200} height={100} className={classes.logo} />
       </Link>
-      <div className={classes.title}>한국정보과학회 학회/논문 통계 서비스</div>
+      <div className={classes.title}>
+      KIISE CS Top Conference World Ranking <br />
+      한국정보과학회 우수학술대회 목록 국가별 통계</div>
     </header>
   );
 }

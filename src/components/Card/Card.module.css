@@ -2,8 +2,9 @@
   border: 2px solid #74777f;
   border-radius: 12px;
   background-color: #f9f9ff;
-  margin: 20px;
+  margin: 16px;
   padding: 15px;
+  width: 255px;
 }
 
 .ratio {
@@ -25,6 +26,10 @@
 
 .ps {
   padding: 8px 0px;
+}
+
+.pbs {
+  padding: 0px 0px 8px 0px;
 }
 
 .pm {
@@ -51,6 +56,12 @@
 }
 
 .compare {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 500;
+}
+
+.compareValue {
+  font-size: 16px;
+  font-weight: 700;
+  margin-left: 4px;
 }

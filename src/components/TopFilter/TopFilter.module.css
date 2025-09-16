@@ -1,58 +1,88 @@
-.root {
-  width: 330px;
-  padding: 60px 42px;
-  border-right: 1px solid #e9ecef;
-}
+.topFilter {
+  padding: 18px;
+  margin: 20px 10px 10px 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: space-between;
 
-@media screen and (max-width: 480px) {
-  .root {
-    display: none;
-  }
-}
-
-.filterContainer {
-  margin-bottom: 30px;
   background-color: #ffffff;
-  padding: 24px 24px;
-  border-radius: 12px;
-  border: 0.5px solid #e9ecef;
+  border-radius: 8px;
 }
 
-.toptierContainer {
+.sort {
   display: flex;
   align-items: center;
-  gap: 0.2rem;
-  color: #1976d2;
+  gap: 4px;
+  white-space: nowrap;
 }
 
-.toptierTitle {
-  margin-bottom: 10px;
+.sortText {
+  padding: 0px 4px;
+  border-radius: 4px;
 }
 
-.categoryTitle {
-  margin-bottom: 10px;
-}
-
-.ratingInput {
-  accent-color: #425e91;
-}
-
-.ratingLabel {
-  font-weight: 500;
-}
-
-.ratingLabel:hover {
+.sortText:hover {
+  background-color: #f5f5f5;
   cursor: pointer;
 }
 
-.checkboxItem {
-  margin-bottom: 8px;
-  padding: 2px;
-  font-weight: 500;
-  gap: 8px;
+.sortActive {
+  font-weight: 700;
+  color: #2c5cb4;
+}
+
+.divider {
+  font-weight: 200;
+  color: #6c757d;
+}
+
+.statusContainer {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   align-items: center;
-  border-radius: 4px;
+  gap: 4px;
+}
+
+.allClear {
+  color: #6c757d;
+  font-weight: 400;
+  font-size: 14px;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+
+  background-color: #feb9b9;
+  border-radius: 40px;
+  padding: 4px 8px;
+
+  white-space: nowrap;
+}
+
+.allClear:hover {
+  cursor: pointer;
+  background-color: #fca5a5;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  font-weight: 400;
+  font-size: 14px;
+  gap: 2px;
+  padding: 4px 8px;
+  margin-right: 5px;
+  background-color: #e0e0e0;
+  border-radius: 16px;
+  cursor: pointer;
+
+  white-space: nowrap;
+}
+
+.chip:hover {
+  background-color: #d0d0d0;
 }
 
 .red {
@@ -83,11 +113,11 @@
 }
 
 .brown {
-  background-color: #E1DACA;
+  background-color: #e1daca;
 }
 
 .brown:hover {
-  background-color: #E1DACA;
+  background-color: #e1daca;
   cursor: pointer;
 }
 
@@ -159,37 +189,3 @@
 .dodgerblue:hover { background-color: #5a92d3; }
 .darkgreen { background-color: #76c28f; }
 .darkgreen:hover { background-color: #68b180; }
-
-.categoryInput {
-  accent-color: #425e91;
-}
-
-.categoryInput:hover {
-  cursor: pointer;
-}
-
-.categoryText {}
-
-.categoryText:hover {
-  cursor: pointer;
-}
-
-.yearInput {
-  width: 90px;
-}
-
-.yearButton {
-  margin-left: 10px;
-  background-color: #425e91;
-  border: 0px;
-  border-radius: 6px;
-  padding: 4px;
-  color: #ffffff;
-}
-
-.yearSelect {
-  width: 4.8vw;
-  min-width: 40px;
-  height: 1.6vw;
-  font-size: 16px;
-}

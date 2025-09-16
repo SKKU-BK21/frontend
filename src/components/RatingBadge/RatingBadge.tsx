@@ -25,7 +25,7 @@ export function RatingBadge({
       style={{ width: width, height: height, backgroundColor: backgroundColor }}
     >
       <div className={classes.element} style={{ color: color }}>
-        {`${year} ${rating === "FIRST" ? "최우수" : "우수"}`}
+        {`${year} ${rating === "FIRST" ? "🥇Top Rank" : "🥈High Rank"}`}
       </div>
     </div>
   );

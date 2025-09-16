@@ -24,7 +24,7 @@ export function DataTable({ id, render, fromYear, toYear }: IDataTableProps) {
   ]);
   const [data, setData] = useState<Publication[]>();
   const [pageData, setPageData] = useState<PagedApiResponse<{}>>();
-  const [sortCriteria, setSortCriteria] = useState("alphabet");
+  const [sortCriteria, setSortCriteria] = useState("year");
   const [pageNumber, setPageNumber] = useState(1);
 
   const handleMouseDown = (index: number, event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
@@ -79,22 +79,22 @@ export function DataTable({ id, render, fromYear, toYear }: IDataTableProps) {
   return (
     <>
       <div className={classes["sort-container"]}>
-        <span>정렬 기준</span>
-        <span
-          className={`${classes["sort-select"]} ${
-            sortCriteria === "alphabet" ? classes["active"] : ""
-          }`}
-          onClick={() => handleSortChange("alphabet")}
-        >
-          알파벳 순
-        </span>
+        <span>Sort By</span>
         <span
           className={`${classes["sort-select"]} ${
             sortCriteria === "year" ? classes["active"] : ""
           }`}
           onClick={() => handleSortChange("year")}
         >
-          출판년도 순
+          Publication Year
+        </span>
+        <span
+          className={`${classes["sort-select"]} ${
+            sortCriteria === "alphabet" ? classes["active"] : ""
+          }`}
+          onClick={() => handleSortChange("alphabet")}
+        >
+          Alphabetical Order
         </span>
         {/* <span
           className={`${classes["sort-select"]} ${
@@ -153,7 +153,7 @@ export function DataTable({ id, render, fromYear, toYear }: IDataTableProps) {
 }
 
 // const DATA_TABLE_HEADER = ["순번", "논문 제목", "저자", "출판년도", "인용수"];
-const DATA_TABLE_HEADER = ["순번", "논문 제목", "저자", "출판년도"];
+const DATA_TABLE_HEADER = ["No.", "Paper Title", "Author", "Year"];
 // const DATA_TABLE_FIELDS = ["id", "title", "authors", "publicationYear", "citationCount"];
 const DATA_TABLE_FIELDS = ["id", "title", "authors", "publicationYear"];
 const MIN_WIDTH = 50;

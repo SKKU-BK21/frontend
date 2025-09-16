@@ -1,23 +1,33 @@
 .root {
   max-width: 1200px;
+  width: calc(100% - 300px);
+}
+
+@media screen and (max-width: 480px) {
+  .root {
+    width: 100%;
+  }
 }
 
 .row {
   display: flex;
   flex-wrap: wrap;
+  background-color: #ffffff;
+  border-radius: 12px;
+  margin: 0px 10px;
 }
 
 .column {
   flex: 25%;
 }
 
-.topFilter {
-  font-weight: 700;
-  text-align: right;
-  padding: 10px;
-  margin: 20px 0px 10px 10px;
-
-  border-bottom: 1px solid #e9ecef;
+@media screen and (max-width: 480px) {
+  .column {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1; 
+  }
 }
 
 .topFilter span {
@@ -29,8 +39,14 @@
   justify-content: center;
   align-items: center;
   gap: 10px;
-  margin-top: 5px;
-  margin-bottom: 10px;
+  margin-top: 15px;
+  margin-bottom: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
+  padding: 8px;
+
+  border-radius: 8px;
+  background-color: #ffffff;
 }
 
 .pagination-icon {
@@ -45,4 +61,21 @@
 
 .pagination span {
   font-size: 20px;
+}
+
+.noDataMessage {
+  padding: 30px;
+}
+
+.pagination-item {
+  cursor: pointer;
+  padding: 5px 10px 5px 10px;
+  border: 1px solid #e9ecef;
+  border-radius: 5px;
+}
+.pagination-item.active {
+  background-color: aliceblue;
+}
+.pagination-item:hover {
+  background-color: #f8f9fa;
 }
