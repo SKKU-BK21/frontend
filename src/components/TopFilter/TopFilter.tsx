@@ -49,7 +49,7 @@ export default function TopFilter({
   };
 
   const handleClearAll = () => {
-    setIsExcellentChecked(false);
+    setIsExcellentChecked(true);
     setIsGoodChecked(false);
     setCategoryChecked([]);
   };
