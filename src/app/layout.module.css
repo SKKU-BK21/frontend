@@ -2,4 +2,5 @@
   height: auto;
   min-height: calc(100vh - 10rem);
   background-color: #f0f2f4;
+  padding: 1px;
 }
